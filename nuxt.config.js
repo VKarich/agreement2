@@ -28,7 +28,8 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
-    '@nuxtjs/moment'
+    '@nuxtjs/moment',
+    '@nuxtjs/vuetify'
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)

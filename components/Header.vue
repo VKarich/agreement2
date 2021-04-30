@@ -85,12 +85,18 @@
               size="is-large"
               multilined
             >
-              <button class="sides" outlined v-for="(donor, index) in donors"
-                  :key="index"
-                  :value="donor.value"
-                  @click="selection_2($event)"
-                  >{{ donor.msg }}</button>
-
+              <b-field>
+                <b-radio
+                  v-for="n in donors"
+                  :key="n.msg"
+                  v-model="select_from"
+                  :native-value="`${n.value}`"
+                  @input="selection_2($event)"
+                  type="is-info"
+                >
+                  {{ n.msg }}
+                </b-radio>
+              </b-field>
             </b-tooltip>
           </b-field>
           <b-field
@@ -103,11 +109,18 @@
               size="is-large"
               multilined
             >
-              <button class="sides" v-for="(recipient, index) in recipients"
-                  :key="index"
-                  :value="recipient.value"
-                  @click="selection_3($event)"
-                  >{{ recipient.msg }}</button>
+              <b-field>
+                <b-radio
+                  v-for="n in recipients"
+                  :key="n.msg"
+                  v-model="select_to"
+                  :native-value="`${n.value}`"
+                  @input="selection_3($event)"
+                  type="is-info"
+                >
+                  {{ n.msg }}
+                </b-radio>
+              </b-field>
             </b-tooltip>
           </b-field>
         </b-step-item>
@@ -141,6 +154,7 @@ export default {
   name: "Header",
   data() {
     return {
+      radioGroup: "",
       isOpen: 0,
       activeStep: 0,
       activeSecond: 0,
@@ -234,11 +248,9 @@ export default {
       this.hasNavigation = false;
     },
     selection_2(event) {
-      this.select_from = event.path[0].value;
       this.activeSecond += 1;
     },
     selection_3(event) {
-      this.select_to = event.path[0].value;
       this.show_first = false;
       this.onSelect = false;
       this.activeSecond += 1;
@@ -353,5 +365,16 @@ button:hover {
 .sides {
   margin: 2px;
   height: 2.5em;
+}
+.side {
+  background-color: chartreuse;
+  color: #1990d4;
+}
+button:active,
+button:focus {
+  outline: none !important;
+}
+button::-moz-focus-inner {
+  border: 0 !important;
 }
 </style>

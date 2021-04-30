@@ -396,7 +396,7 @@
           <section
             v-if="
               JSON.stringify(model.sellerRepresent).match(
-                'Я являюсь Представителем Продавца'
+                'Да, от имени Продавца действует представитель'
               )
             "
           >
@@ -1236,7 +1236,7 @@
           <section
             v-if="
               JSON.stringify(model.custRepresent).match(
-                'Я являюсь Представителем Покупателя'
+                'Да, от имени Покупателя действует представитель'
               )
             "
           >
@@ -3508,7 +3508,7 @@ export default {
       deep: true,
       handler(newValue) {
         localStorage.model = JSON.stringify(newValue)
-        if ((newValue.sellerRepresent == 'Я являюсь Продавцом и представляю свои интересы самостоятельно') || (newValue.custRepresent == 'Я являюсь Покупателем и представляю свои интересы самостоятельно')) {
+        if ((newValue.sellerRepresent == 'Нет') || (newValue.custRepresent == 'Нет')) {
           let x = Object.keys(newValue).filter(key => (JSON.stringify(key).match('Represent') && key.length > 15));
             for (let n in x) {
               this.model[x[n]] = '';
