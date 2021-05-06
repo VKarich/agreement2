@@ -3075,6 +3075,13 @@
         />
       </div>
     </div>
+    <div id="sec_" v-if="select_first_step == 'Договор аренды'">
+      <div id="left_menu">
+        <form-builder :model="model" :config="config"></form-builder>
+      </div>
+      <div id="right_menu">
+      </div>
+    </div>
   </div>
 </template>
 
@@ -3086,6 +3093,8 @@ import model_out from "@/model.json";
 import schema_out from "@/schema.json";
 import axios from "axios";
 import AwesomeMask from "awesome-mask";
+import formBuilder from './formBuilder.vue';
+import lala from '@/config/schema.json'
 
 const rubles = require("rubles").rubles;
 
@@ -3093,6 +3102,7 @@ export default {
   components: {
     Multiselect,
     dkp,
+    formBuilder,
   },
   directives: {
     mask: AwesomeMask,
@@ -3106,6 +3116,7 @@ export default {
   },
   data() {
     return {
+      config: lala,
       selected: null,
       isSwitched: false,
       isSwitchedCustom: "Нет",
