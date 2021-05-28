@@ -13,31 +13,31 @@
           >
         </p>
         <p id="right">
-          <strong>Дата: {{ model.date | str_corrector }}</strong>
+          <strong>Дата: {{ model.date | formatDate | str_corrector }}</strong>
         </p>
       </div>
       <div>
         <div v-if="select_second_step == 'ФЛ'">
           <p>
             {{ model.sellerFullName | str_corrector }},
-            {{ model.sellerBirthYear | str_corrector }} года рождения, место
+            {{ model.sellerBirthYear | formatDate | str_corrector }} года рождения, место
             рождения: {{ model.sellerBirthPlace | str_corrector }}, гражданство:
             {{ model.sellerNationality | str_corrector }}, паспорт серия:
             {{ model.sellerPassNumberFirst | str_corrector }} номер:
             {{ model.sellerPassNumberSec | str_corrector }}, выдан:
             {{ model.sellerPassIssuedBy.toUpperCase() | str_corrector }}
-            {{ model.sellerPassIssuedOn | str_corrector }}, код подразделения:
+            {{ model.sellerPassIssuedOn | formatDate | str_corrector }}, код подразделения:
             {{ model.sellerUnitCode | str_corrector }}, зарегистрированный по
             адресу
             {{ model.sellerRegAddress | str_corrector }}
             {{ model.sellerRepresentDocNum | doverenostFL }}
-            {{ model.sellerRepresentDocDate | from }}
+            {{ model.sellerRepresentDocDate | empty | formatDate | from }}
             {{ model.sellerRepresentDocBy | orgFL }}
             {{ model.sellerRepresentFullName | dovname }}
             {{ model.sellerRepresentPassNumFirst | seriaFL
             }}{{ model.sellerRepresentDocPassNumSec | nomerpas }}
             {{ model.sellerRepresentPassIssuedBy | gaven }}
-            {{ model.sellerRepresentPassDate }}
+            {{ model.sellerRepresentPassDate | empty | formatDate }}
             {{ model.sellerRepresentUnitCode | code }}
             {{ model.sellerRepresentRegAddress | addressFL }}
             , именуемый в дальнейшем
@@ -55,11 +55,11 @@
             {{ model.sellerCeoFullName | str_corrector }}, действующего на
             основании {{ model.sellerOrgDoc.firstLetterCaps() | str_corrector }}
             {{ model.sellerOrgDocNum | nomer }}
-            {{ model.sellerOrgDocDate | from }}
+            {{ model.sellerOrgDocDate | formatDate | from }}
             {{ model.sellerOrgDocPassNumFirst | seria
             }}{{ model.sellerOrgDocPassNumSec | nomerpas }}
             {{ model.sellerOrgPassIssuedBy | gaven }}
-            {{ model.sellerOrgDocPassDate }}
+            {{ model.sellerOrgDocPassDate | formatDate }}
             {{ model.sellerOrgUnitCode | code }}
             {{ model.sellerOrgRegAddress | address }} с одной стороны, и
           </p>
@@ -68,23 +68,23 @@
       <div v-if="select_third_step == 'ФЛ'">
         <p>
           {{ model.custFullName | str_corrector }},
-          {{ model.custBirthYear | str_corrector }} года рождения, место
+          {{ model.custBirthYear | formatDate | str_corrector }} года рождения, место
           рождения: {{ model.custBirthPlace | str_corrector }}, гражданство:
           {{ model.custNationality | str_corrector }}, паспорт серия:
           {{ model.custPassNumberFirst | str_corrector }} номер:
           {{ model.custPassNumberSec | str_corrector }}, выдан:
           {{ model.custPassIssuedBy.toUpperCase() | str_corrector }}
-          {{ model.custPassIssuedOn | str_corrector }}, код подразделения:
+          {{ model.custPassIssuedOn | formatDate | str_corrector }}, код подразделения:
           {{ model.custUnitCode | str_corrector }}, зарегистрированный по адресу
           {{ model.custRegAddress | str_corrector }}
           {{ model.custRepresentDocNum | doverenostFL }}
-          {{ model.custRepresentDocDate | from }}
+          {{ model.custRepresentDocDate | empty | formatDate | from }}
           {{ model.custRepresentDocBy | orgFL }}
           {{ model.custRepresentFullName | dovname }}
           {{ model.custRepresentPassNumFirst | seriaFL
           }}{{ model.custRepresentDocPassNumSec | nomerpas }}
           {{ model.custRepresentPassIssuedBy | gaven }}
-          {{ model.custRepresentPassDate }}
+          {{ model.custRepresentPassDate | empty | formatDate }}
           {{ model.custRepresentUnitCode | code }}
           {{ model.custRepresentRegAddress | addressFL }}
           , именуемый в дальнейшем
@@ -103,11 +103,11 @@
           {{ model.custCeoFullName | str_corrector }}, действующего на основании
           {{ model.custOrgDoc.firstLetterCaps() | str_corrector }}
           {{ model.custOrgDocNum | nomer }}
-          {{ model.custOrgDocDate | from }}
+          {{ model.custOrgDocDate | formatDate | from }}
           {{ model.custOrgDocPassNumFirst | seria
           }}{{ model.custOrgDocPassNumSec | nomerpas }}
           {{ model.custOrgPassIssuedBy | gaven }}
-          {{ model.custOrgDocPassDate }}
+          {{ model.custOrgDocPassDate | formatDate }}
           {{ model.custOrgUnitCode | code }}
           {{ model.custOrgRegAddress | address }}
           , именуемый в дальнейшем
@@ -132,7 +132,7 @@
           принадлежит <b>Продавцу</b> на основании
           {{ model.propertyDoc | str_corrector }}, о чем в Едином
           государственном реестре недвижимости сделана запись регистрации от
-          {{ model.regDocDate | str_corrector }} №{{
+          {{ model.regDocDate | formatDate | str_corrector }} №{{
             model.regDocNumber | str_corrector
           }}.
         </p>
@@ -147,7 +147,7 @@
           принадлежит <b>Продавцу</b> на основании
           {{ model.propertyDoc | str_corrector }}, о чем в Едином
           государственном реестре недвижимости сделана запись регистрации от
-          {{ model.regDocDate | str_corrector }} №{{
+          {{ model.regDocDate | formatDate | str_corrector }} №{{
             model.regDocNumber | str_corrector
           }}.
         </p>
@@ -161,7 +161,7 @@
           принадлежит <b>Продавцу</b> на основании
           {{ model.propertyDoc | str_corrector }}, о чем в Едином
           государственном реестре недвижимости сделана запись регистрации от
-          {{ model.regDocDate | str_corrector }} №{{
+          {{ model.regDocDate | formatDate | str_corrector }} №{{
             model.regDocNumber | str_corrector
           }}.
         </p>
@@ -189,11 +189,11 @@
           <b>государственного сертификата на материнский (семейный) капитал</b>,
           выданного на основании решения
           <b>{{ model.matcap.toUpperCase() | str_corrector }}</b> от
-          {{ model.matcapDesDate | str_corrector }} №
+          {{ model.matcapDesDate | formatDate | str_corrector }} №
           {{ model.matcapDesNum | str_corrector }}, серии
           {{ model.matcapSer | str_corrector }} №
           {{ model.matcapNum | str_corrector }}, выданного
-          {{ model.matcapDate | str_corrector }} на имя
+          {{ model.matcapDate | formatDate | str_corrector }} на имя
           <b>{{ model.matcapOwner | str_corrector }}</b
           >, в соответствии с Федеральным законом
           <b
@@ -239,7 +239,7 @@
         <div v-if="JSON.stringify(model.payMethod).match('Рассрочка')">
           <span
             >Оплата по договору осуществляется в срок до
-            {{ model.zlgPayTermDate | str_corrector }}</span
+            {{ model.zlgPayTermDate | formatDate | str_corrector }}</span
           >
         </div>
         <div v-if="JSON.stringify(model.payMethod).match('Рассрочка')">
@@ -297,7 +297,7 @@
         <div v-if="JSON.stringify(model.payMethod).match('Ипотека физ. лица')">
           <span
             >Оплата по договору осуществляется в срок до
-            {{ model.zlgPayTermDate | str_corrector }}</span
+            {{ model.zlgPayTermDate | formatDate | str_corrector }}</span
           >
         </div>
         <div v-if="JSON.stringify(model.payMethod).match('Ипотека физ. лица')">
@@ -351,7 +351,7 @@
           <b>Покупателю {{ model.crBankName.toUpperCase() | str_corrector }}</b>
           (далее - Банк), в соответствии с кредитным договором №
           {{ model.crBankNumber | str_corrector }} от
-          <b>{{ model.crBankDocDate | str_corrector }}</b
+          <b>{{ model.crBankDocDate | formatDate | str_corrector }}</b
           >, заключенным в городе
           {{ model.crBankDocTown | str_corrector }} между Банком и
           <b>Покупателем</b> (далее – Кредитный договор) сроком на
@@ -729,11 +729,18 @@ Vue.filter('str_corrector', function (value) {
   return (value)
 })
 
-Vue.filter('formatDate', function (value) {
-  if (value) {
-    return moment(String(value)).format('DD.MM.YYYY')
+Vue.filter('empty', function (value) {
+  if (value == null) {
+    return ''
   }
   return (value)
+});
+
+Vue.filter('formatDate', function (value) {
+  if (value) {
+    return (moment(String(value)).format('DD.MM.YYYY'))
+  }
+  return ''
 });
 
 Vue.filter("dovname", function (value) {

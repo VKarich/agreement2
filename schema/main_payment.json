@@ -1,0 +1,789 @@
+{
+  "groups": [
+    {
+      "legend": "Данные по оплате",
+      "fields": [
+        {
+          "type": "Number",
+          "inputType": "number",
+          "min": 0,
+          "label": "Стоимость объекта",
+          "model": "cost",
+          "mask": "99999999999",
+          "placeholder": "Введите стоимость объекта",
+          "id": "cost",
+          "required": true
+        },
+        {
+          "type": "MultiSelect",
+          "label": "Способ оплаты",
+          "placeholder": "Выберите необходимый способ оплаты",
+          "values": [
+            {
+              "name": "Материнский капитал"
+            },
+            {
+              "name": "Рассрочка"
+            },
+            {
+              "name": "Ипотека банка"
+            },
+            {
+              "name": "Ипотека физ. лица"
+            },
+            {
+              "name": "Аккредитив"
+            },
+            {
+              "name": "Наличный расчет"
+            },
+            {
+              "name": "Безналичный расчет"
+            }
+          ],
+          "max": 4,
+          "selectOptions": {
+            "multiple": true,
+            "label": "name",
+            "searchable": false,
+            "closeOnSelect": false,
+            "trackBy": "name"
+          },
+          "model": "payMethod",
+          "mask": "",
+          "id": "pay_method",
+          "hint": "Здесь Вам необходимо выбрать способ оплаты по данному договору",
+          "required": true
+        },
+        {
+          "type": "pseudoLabel",
+          "label": "Материнский капитал",
+          "mask": "",
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Материнский капитал"
+          }
+        },
+        {
+          "type": "Number",
+          "inputType": "number",
+          "min": 0,
+          "placeholder": "Введите сумму оплаты",
+          "label": "Сумма оплаты по сертификату на Материнский капитал",
+          "model": "paySumMatCap",
+          "mask": "99999999999",
+          "id": "pay_sum_mat_cap",
+          "hint": "Какую сумму Вы готовы заплатить при помощи материнского капитала?",
+          "required": true,
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Материнский капитал"
+          }
+        },
+        {
+          "type": "Input",
+          "inputType": "text",
+          "label": "Наименование органа, выдавшего сертификат",
+          "placeholder": "Наименование органа, выдавшего сертификат",
+          "model": "matcap",
+          "mask": "",
+          "id": "mat_cap",
+          "hint": "Укажите наименование органа, который выдал Вам сертификат",
+          "required": true,
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Материнский капитал"
+          }
+        },
+        {
+          "type": "Datepicker",
+          "inputType": "date",
+          "format": "YYYY-MM-DD",
+          "label": "Дата постановления о выдаче сертификата",
+          "model": "matcapDesDate",
+          "mask": "",
+          "id": "mat_cap_des_date",
+          "hint": "Укажите, пожалуйста, когда было выдано постановление о выдаче сертификата",
+          "required": true,
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Материнский капитал"
+          }
+        },
+        {
+          "type": "Input",
+          "inputType": "text",
+          "label": "Номер решения, на основании которого выдан сертификат",
+          "model": "matcapDesNum",
+          "mask": "",
+          "id": "mat_cap_des_num",
+          "hint": "Укажите, пожалуйста, номер решения, на основании которого выдан сертификат на материнский капитал",
+          "required": true,
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Материнский капитал"
+          }
+        },
+        {
+          "type": "Input",
+          "inputType": "text",
+          "label": "Серия данного сертификата",
+          "model": "matcapSer",
+          "mask": "",
+          "id": "mat_cap_ser",
+          "hint": "Укажите, пожалуйста, серию сертификата на материнский капитал",
+          "required": true,
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Материнский капитал"
+          }
+        },
+        {
+          "type": "Input",
+          "inputType": "text",
+          "label": "Номер данного сертификата",
+          "model": "matcapNum",
+          "mask": "",
+          "id": "mat_cap_num",
+          "hint": "Укажите, пожалуйста, номер сертификата на материнский капитал",
+          "required": true,
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Материнский капитал"
+          }
+        },
+        {
+          "type": "Datepicker",
+          "inputType": "date",
+          "format": "YYYY-MM-DD",
+          "label": "Дата выдачи сертификата",
+          "model": "matcapDate",
+          "mask": "",
+          "id": "mat_cap_date",
+          "hint": "Укажите, пожалуйста, когда был выдан данный сертификат",
+          "required": true,
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Материнский капитал"
+          }
+        },
+        {
+          "type": "Input",
+          "inputType": "text",
+          "label": "ФИО владельца сертификата",
+          "model": "matcapOwner",
+          "mask": "",
+          "id": "mat_cap_owner",
+          "hint": "Укажите, пожалуйста, полное имя владельца данного сертификата (в родительном падеже). Например: Иванова Ивана Ивановича",
+          "required": true,
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Материнский капитал"
+          }
+        },
+        {
+          "type": "pseudoLabel",
+          "label": "Рассрочка",
+          "mask": "",
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Рассрочка"
+          }
+        },
+        {
+          "type": "Number",
+          "inputType": "number",
+          "label": "Сумма, на которую предоставляется рассрочка",
+          "model": "paySumRS",
+          "mask": "99999999999",
+          "min": 0,
+          "id": "pay_sum_rs",
+          "placeholder": "Сумма платежа",
+          "hint": "Укажите полную сумму, на которую предоставляется рассрочка",
+          "required": true,
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Рассрочка"
+          }
+        },
+        {
+          "type": "Number",
+          "inputType": "number",
+          "label": "Количество платежей",
+          "placeholder": "На сколько частей Вы планируете разбить платеж?",
+          "model": "quantityPayments",
+          "mask": "99",
+          "id": "quantity_payments",
+          "hint": "Укажите, пожалуйста, из скольки частей состоит Ваш платеж",
+          "min": 0,
+          "required": true,
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Рассрочка"
+          }
+        },
+        {
+          "type": "GeneratedField",
+          "mask": "",
+          "model": ["rsPaymentDate", "rsPayment"],
+          "visible": {
+            "dep_name": "quantityPayments",
+            "dep_name_payment": "payMethod",
+            "dep_type": "Generatedfield",
+            "dep_check": "Рассрочка"
+          }
+        },
+        {
+          "type": "Select",
+          "label": "Наличие залога в пользу Продавца",
+          "model": "zlgPay",
+          "mask": "",
+          "id": "zlg_pay",
+          "hint": "Будет ли использоваться залог?",
+          "values": [
+            {
+              "id": "Имеется",
+              "name": "Имеется"
+            },
+            {
+              "id": "Не имеется",
+              "name": "Не имеется"
+            }
+          ],
+          "required": true,
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Рассрочка"
+          }
+        },
+        {
+          "type": "Datepicker",
+          "inputType": "date",
+          "format": "DD.MM-YYYY",
+          "label": "Окончательный платеж",
+          "placeholder": "Дата окончательного платежа",
+          "model": "zlgPayTermDate",
+          "mask": "",
+          "id": "zlg_pay_term_date",
+          "hint": "Укажите, пожалуйста, последний срок оплаты по данному договору",
+          "required": true,
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Рассрочка"
+          }
+        },
+        {
+          "type": "pseudoLabel",
+          "label": "Ипотека банка",
+          "mask": "",
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Ипотека банка"
+          }
+        },
+        {
+          "type": "Number",
+          "inputType": "number",
+          "label": "Полная сумма кредита",
+          "model": "paySumIB",
+          "mask": "99999999999",
+          "id": "pay_sum_ib",
+          "min": 0,
+          "placeholder": "Укажите полную сумму кредита",
+          "hint": "Укажите полную сумму кредита по ипотечному договору",
+          "required": true,
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Ипотека банка"
+          }
+        },
+        {
+          "type": "Input",
+          "inputType": "text",
+          "label": "Наименование банка, предоставившего ипотеку",
+          "model": "crBankName",
+          "mask": "",
+          "id": "cr_bank_name",
+          "hint": "Укажите наименование банка",
+          "placeholder": "Например: Тинькофф, Сбербанк и т.д.",
+          "required": true,
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Ипотека банка"
+          }
+        },
+        {
+          "type": "Input",
+          "inputType": "text",
+          "label": "Номер кредитного договора",
+          "placeholder": "Номер кредитного договора",
+          "model": "crBankNumber",
+          "mask": "",
+          "id": "cr_bank_number",
+          "hint": "Укажите, пожалуйста, номер кредитного договора",
+          "required": true,
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Ипотека банка"
+          }
+        },
+        {
+          "type": "Datepicker",
+          "inputType": "date",
+          "format": "YYYY-MM-DD",
+          "label": "Дата заключения кредитного договора",
+          "model": "crBankDocDate",
+          "mask": "",
+          "id": "cr_bank_doc_date",
+          "placeholder": "Дата заключения кредитного договора",
+          "hint":
+            "Укажите, пожалуйста, когда Вы заключили данный кредитный договор",
+          "required": true,
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Ипотека банка"
+          }
+        },
+        {
+          "type": "Input",
+          "inputType": "text",
+          "label": "Город, в котором был заключен ипотечный договор",
+          "placeholder": "Название города",
+          "model": "crBankDocTown",
+          "mask": "",
+          "id": "cr_bank_doc_town",
+          "hint":
+            "Укажите, пожалуйста, город, в котором Вы заключили договор ипотеки",
+          "required": true,
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Ипотека банка"
+          }
+        },
+        {
+          "type": "Number",
+          "inputType": "number",
+          "label": "На сколько месяцев Вам предоставили ипотеку",
+          "model": "crBankDocQMonth",
+          "mask": "",
+          "id": "cr_bank_doc_q_month",
+          "placeholder": "Введите количество месяцев",
+          "hint":
+            "Укажите, пожалуйста, количество месяцев, указаных в ипотечном договоре",
+          "required": true,
+          "min": 0,
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Ипотека банка"
+          }
+        },
+        {
+          "type": "Number",
+          "inputType": "number",
+          "label": "ОГРН банка",
+          "placeholder": "Введите ОГРН банка",
+          "model": "crBankOgrn",
+          "mask": "",
+          "id": "cr_bank_ogrn",
+          "min": 0,
+          "hint": "Укажите, пожалуйста, ОГРН банка",
+          "required": true,
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Ипотека банка"
+          }
+        },
+        {
+          "type": "Number",
+          "inputType": "number",
+          "label": "ИНН банка",
+          "placeholder": "Введите ИНН банка",
+          "model": "crBankInn",
+          "mask": "",
+          "min": 0,
+          "id": "cr_bank_inn",
+          "hint": "Укажите, пожалуйста, ИНН банка",
+          "required": true,
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Ипотека банка"
+          }
+        },
+        {
+          "type": "Number",
+          "inputType": "number",
+          "label": "Укажите КПП банка",
+          "model": "crBankKpp",
+          "mask": "",
+          "min": 0,
+          "id": "cr_bank_kpp",
+          "placeholder": "Введите КПП банка",
+          "hint": "Укажите, пожалуйста, КПП банка",
+          "message":
+            "КПП банка состоит из 9 цифр. Проверьте правильность реквизитов",
+          "required": true,
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Ипотека банка"
+          }
+        },
+        {
+          "type": "Number",
+          "inputType": "number",
+          "label": "Укажите расчетный счет банка",
+          "model": "crBankRs",
+          "mask": "",
+          "min": 0,
+          "id": "cr_bank_rs",
+          "placeholder": "Номер расчетного счета банка",
+          "hint": "Укажите, пожалуйста, расчетный счет банка",
+          "required": true,
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Ипотека банка"
+          }
+        },
+        {
+          "type": "Number",
+          "inputType": "number",
+          "label": "Укажите КС банка",
+          "placeholder": "КС банка",
+          "model": "crBankKs",
+          "mask": "",
+          "min": 0,
+          "id": "cr_bank_ks",
+          "hint": "Укажите, пожалуйста, КС банка",
+          "required": true,
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Ипотека банка"
+          }
+        },
+        {
+          "type": "Number",
+          "inputType": "number",
+          "label": "Укажите БИК банка",
+          "placeholder": "БИК банка",
+          "model": "crBankBik",
+          "mask": "999999999",
+          "min": 0,
+          "id": "cr_bank_bik",
+          "hint": "Укажите, пожалуйста, БИК банка",
+          "required": true,
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Ипотека банка"
+          }
+        },
+        {
+          "type": "Input",
+          "inputType": "text",
+          "label": "Укажите юридический адрес банка",
+          "model": "crBankAddress",
+          "mask": "",
+          "id": "cr_bank_address",
+          "placeholder": "Юр. адрес банка",
+          "hint": "Укажите, пожалуйста, юридический адрес банка",
+          "required": true,
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Ипотека банка"
+          }
+        },
+        {
+          "type": "Input",
+          "inputType": "text",
+          "label": "Укажите почтовый адрес банка",
+          "model": "crBankPostAddress",
+          "mask": "",
+          "id": "cr_bank_post_address",
+          "placeholder": "Укажите почтовый адрес банка",
+          "hint": "Укажите, пожалуйста, почтовый адрес банка",
+          "required": true,
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Ипотека банка"
+          }
+        },
+        {
+          "type": "pseudoLabel",
+          "label": "Ипотека физ. лица",
+          "mask": "",
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Ипотека физ. лица"
+          }
+        },
+        {
+          "type": "Number",
+          "inputType": "number",
+          "label": "Сумма кредита по ипотеке физ. лица",
+          "model": "paySumFL",
+          "mask": "99999999999",
+          "id": "pay_sum_fl",
+          "placeholder": "Укажите полную сумму кредита",
+          "hint": "Укажите полную сумму кредита по ипотеке физ. лица",
+          "required": true,
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Ипотека физ. лица"
+          }
+        },
+        {
+          "type": "Number",
+          "inputType": "number",
+          "label": "Количество платежей по ипотеке физ. лица",
+          "placeholder": "На сколько частей Вы планируете разбить платеж?",
+          "model": "quantityPaymentsFL",
+          "mask": "99",
+          "min": 0,
+          "id": "quantity_payments_fl",
+          "hint":
+            "Укажите, пожалуйста, из скольки частей состоит Ваш платеж",
+          "required": true,
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Ипотека физ. лица"
+          }
+        },
+        {
+          "type": "GeneratedFieldFL",
+          "mask": "",
+          "model": ["rsPaymentDateFL", "rsPaymentFL"],
+          "visible": {
+            "dep_name": "quantityPaymentsFL",
+            "dep_name_payment": "payMethod",
+            "dep_type": "Generatedfield",
+            "dep_check": "Ипотека физ. лица"
+          }
+        },
+        {
+          "type": "pseudoLabel",
+          "label": "Аккредитив",
+          "mask": "",
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Аккредитив"
+          }
+        },
+        {
+          "type": "Number",
+          "inputType": "number",
+          "placeholder": "Введите сумму оплаты",
+          "label": "Сумма оплаты (Аккредитив)",
+          "model": "paySumA",
+          "mask": "99999999999",
+          "id": "pay_sum_a",
+          "hint": "Какую сумму Вы готовы заплатить?",
+          "required": true,
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Аккредитив"
+          }
+        },
+        {
+          "type": "Number",
+          "inputType": "number",
+          "label": "Срок действия аккредитива (в днях)",
+          "model": "acrDays",
+          "mask": "",
+          "id": "acr_days",
+          "placeholder": "Количество дней",
+          "hint": "Укажите, пожалуйста, количество дней",
+          "min": 0,
+          "required": true,
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Аккредитив"
+          }
+        },
+        {
+          "type": "Input",
+          "inputType": "text",
+          "label": "Наименование банка-эмитента по аккредитиву",
+          "model": "acrBankName",
+          "mask": "",
+          "id": "acr_bankname",
+          "placeholder": "Банк-эмитент по аккредитиву",
+          "hint": "Укажите, пожалуйста, название банка",
+          "required": true,
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Аккредитив"
+          }
+        },
+        {
+          "type": "Input",
+          "inputType": "text",
+          "label": "Город, в котором находится банк",
+          "placeholder": "Введите название города",
+          "model": "acrBankTown",
+          "mask": "",
+          "id": "acr_banktown",
+          "hint": "Укажите, пожалуйста, город",
+          "required": true,
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Аккредитив"
+          }
+        },
+        {
+          "type": "Number",
+          "inputType": "number",
+          "label": "Номер счета продавца в банке",
+          "model": "acrBankSellerNumber",
+          "min": 0,
+          "mask": "",
+          "id": "acr_bankselnum",
+          "placeholder": "Номер счета в банке",
+          "hint": "Укажите, пожалуйста, номер банковского счета продавца",
+          "required": true,
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Аккредитив"
+          }
+        },
+        {
+          "type": "Input",
+          "inputType": "text",
+          "label":
+            "Наименование банка получателя денежных средств по аккредитиву",
+          "model": "acrBankSellerName",
+          "mask": "",
+          "id": "acr_bankselname",
+          "placeholder": "Наименование банка получателя",
+          "hint": "Укажите, пожалуйста, название банка",
+          "required": true,
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Аккредитив"
+          }
+        },
+        {
+          "type": "pseudoLabel",
+          "label": "Наличный расчет",
+          "mask": "",
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Наличный расчет"
+          }
+        },
+        {
+          "type": "Number",
+          "inputType": "number",
+          "label": "Сумма платежа по наличному расчету",
+          "model": "nal",
+          "mask": "99999999999",
+          "min": 0,
+          "id": "nal",
+          "placeholder": "Введите сумму платежа",
+          "required": true,
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Наличный расчет"
+          }
+        },
+        {
+          "type": "pseudoLabel",
+          "label": "Безналичный расчет",
+          "mask": "",
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Безналичный расчет"
+          }
+        },
+        {
+          "type": "Number",
+          "inputType": "number",
+          "label": "Сумма платежа по безналичному расчету",
+          "model": "bznal",
+          "min": 0,
+          "mask": "99999999999",
+          "id": "bznal",
+          "placeholder": "Введите сумму платежа",
+          "required": true,
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Безналичный расчет"
+          }
+        },
+        {
+          "type": "Number",
+          "inputType": "number",
+          "label": "Номер счета продавца в банке",
+          "model": "bznalBankNum",
+          "mask": "",
+          "id": "bznal_banknum",
+          "min": 0,
+          "hint": "Укажите, пожалуйста, номер счета продавца в банке",
+          "placeholder": "№ счета продавца",
+          "required": true,
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Безналичный расчет"
+          }
+        },
+        {
+          "type": "Input",
+          "inputType": "text",
+          "label": "Наименование банка продавца",
+          "model": "bznalBankName",
+          "mask": "",
+          "id": "bznal_bankname",
+          "hint": "Укажите, пожалуйста, название банка продавца",
+          "placeholder": "Название банка",
+          "required": true,
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Безналичный расчет"
+          }
+        }
+      ]
+    }
+  ]
+}

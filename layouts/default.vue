@@ -35,10 +35,19 @@ html {
   margin: 0;
 }
 .master {
+  display: flex;
   height: 100vh;
-    background-color: rgb(253, 253, 253);
+  flex-direction: column;
+  background-color: rgb(253, 253, 253);
 }
 #main {
-  min-height: 90vh;
+  flex: 1 0 auto;
 }
+/* .master {
+  min-height: 100vh;
+  background-color: rgb(253, 253, 253);
+} */
+/* #main {
+  min-height: 100vmax;
+} */
 </style>

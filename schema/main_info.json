@@ -1,0 +1,51 @@
+{
+  "groups": [
+    {
+      "legend": "Основная информация",
+      "disabled": true,
+      "fields": [
+        {
+          "type": "Input",
+          "inputType": "text",
+          "label": "Город, в котором заключается договор:",
+          "maxlength": 20,
+          "model": "city",
+          "mask": "",
+          "icon": "city",
+          "id": "agrmt_city",
+          "placeholder": "Название города (напр. Москва)",
+          "required": true,
+          "hint": "Введите название города, в котором заключается данный договор",
+          "message": "Не оставляйте меня пустым! Без меня договор будет не полным. Заполните это поле, используя только кириллицу"
+        },
+        {
+          "type": "Datepicker",
+          "inputType": "date",
+          "label": "Дата заключения договора:",
+          "format": "DD.MM.YYYY",
+          "model": "date",
+          "icon": "calendar-today",
+          "mask": "",
+          "position": "is-top",
+          "hint": "Указанная дата является датой подписания договора",
+          "placeholder": "Выберите дату заключения договора",
+          "min": 8,
+          "id": "date",
+          "required": true,
+          "validator": "required"
+        },
+        {
+          "type": "Email",
+          "inputType": "email",
+          "label": "Электронная почта",
+          "model": "email",
+          "mask": "",
+          "id": "email",
+          "required": true,
+          "hint": "Введите Вашу электронную почту",
+          "placeholder": "Введите адрес электронной почты"
+        }
+      ]
+    }
+  ]
+}

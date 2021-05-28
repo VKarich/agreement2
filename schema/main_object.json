@@ -1,0 +1,197 @@
+{
+  "groups": [
+    {
+      "legend": "Данные объекта сделки",
+      "fields": [
+        {
+          "type": "Select",
+          "label": "Наименование объекта",
+          "values": [
+            { "name": "Квартира" },
+            { "name": "Земельный участок" },
+            { "name": "Жилой дом" }
+          ],
+          "model": "propertyName",
+          "mask": "",
+          "placeholder": "Выберите наименование объекта",
+          "id": "property_name",
+          "required": true
+        },
+        {
+          "type": "Number",
+          "inputType": "number",
+          "label": "Общая площадь (м2)",
+          "model": "propertyFloorArea",
+          "mask": "",
+          "id": "property_floor_area",
+          "placeholder": "Общая площадь(в кв.м.)",
+          "hint":
+            "Укажите общую площадь Объекта недвижимости (в квадратных метрах)",
+          "required": true
+        },
+        {
+          "type": "Number",
+          "inputType": "number",
+          "label": "Количество комнат",
+          "placeholder": "Количество комнат",
+          "model": "propertyNumRoom",
+          "mask": "",
+          "id": "property_num_room",
+          "hint": "Укажите количество комнат",
+          "required": true,
+          "visible": {
+            "dep_name": "propertyName",
+            "dep_type": "Select",
+            "dep_check": ["Квартира", "Жилой дом"]
+          }
+        },
+        {
+          "type": "Number",
+          "inputType": "number",
+          "label": "Этаж",
+          "model": "propertyLevel",
+          "mask": "",
+          "placeholder": "Этаж",
+          "id": "property_level",
+          "required": true,
+          "visible": {
+            "dep_name": "propertyName",
+            "dep_type": "Select",
+            "dep_check": "Квартира"
+          }
+        },
+        {
+          "type": "Number",
+          "inputType": "number",
+          "label": "Количество этажей",
+          "model": "propertyLevel",
+          "mask": "",
+          "placeholder": "Этаж",
+          "id": "property_level",
+          "required": true,
+          "visible": {
+            "dep_name": "propertyName",
+            "dep_type": "Select",
+            "dep_check": "Жилой дом"
+          }
+        },
+        {
+          "type": "Select",
+          "label": "Категория земель",
+          "values": [
+            {
+              "name": "земли сельскохозяйственного назначения"
+            },
+            {
+              "name": "земли населенных пунктов"
+            },
+            {
+              "name": "промышленного и иного специального назначения"
+            },
+            {
+              "name": "земли особо охраняемых территорий и объектов"
+            },
+            { "name": "земли лесного фонда" },
+            { "name": "земли водного фонда" },
+            { "name": "земли запаса" }
+          ],
+          "model": "propertyLandCat",
+          "mask": "",
+          "id": "property_land_cat",
+          "required": true,
+          "placeholder": "Выберите вариант",
+          "visible": {
+            "dep_name": "propertyName",
+            "dep_type": "Select",
+            "dep_check": "Земельный участок"
+          }
+        },
+        {
+          "type": "Input",
+          "inputType": "text",
+          "label": "Разрешенное использование",
+          "model": "propertyLandUsed",
+          "mask": "",
+          "placeholder": "Разрешенное использование",
+          "id": "property_land_used",
+          "hint": "Укажите как в документах",
+          "required": true,
+          "visible": {
+            "dep_name": "propertyName",
+            "dep_type": "Select",
+            "dep_check": "Земельный участок"
+          }
+        },
+        {
+          "type": "Input",
+          "inputType": "text",
+          "label": "Адрес объекта",
+          "model": "propertyAddress",
+          "mask": "",
+          "id": "property_address",
+          "placeholder": "Адрес объекта",
+          "hint": "Укажите точный адрес Объекта",
+          "required": true
+        },
+        {
+          "type": "Input",
+          "inputType": "text",
+          "label": "Кадастровый номер",
+          "placeholder": "Укажите кадастровый номер",
+          "maxlength": 40,
+          "model": "propertyUniqueIdentifier",
+          "mask": "",
+          "id": "property_unique_identidier",
+          "hint": "Укажите кадастровый номер объекта",
+          "required": true
+        },
+        {
+          "type": "Input",
+          "inputType": "text",
+          "label": "Объект принадлежит продавцу на основании",
+          "placeholder":
+            "например: Договора купли-продажи земельного участка от 01.01.01г. №35",
+          "model": "propertyDoc",
+          "mask": "",
+          "id": "property_doc",
+          "hint":
+            "Указывается документ-основание регистрации права собственности продавца. Найти его можно в Выписке из ЕГРН или Свидетельстве о праве собственности",
+          "required": true
+        },
+        {
+          "type": "Input",
+          "inputType": "text",
+          "label": "Номер записи о регистрации права в ЕГРН",
+          "model": "regDocNumber",
+          "mask": "",
+          "placeholder": "Укажите номер записи из ЕГРН",
+          "id": "reg_doc_number",
+          "required": true
+        },
+        {
+          "type": "Datepicker",
+          "inputType": "date",
+          "label": "Дата записи о регистрации права в ЕГРН",
+          "placeholder": "Укажите дату записи из ЕГРН",
+          "model": "regDocDate",
+          "mask": "",
+          "format": "YYYY-MM-DD",
+          "id": "reg_doc_date",
+          "required": true
+        },
+        {
+          "type": "Input",
+          "inputType": "text",
+          "label": "Область регистрации перехода права",
+          "model": "propertyRegObl",
+          "mask": "",
+          "placeholder": "Введите название области",
+          "id": "property_reg_obl",
+          "hint":
+            "Укажите название области, где происходит регистрация перехода прав на данное имущество (в родительном падеже). Например: Калужской области",
+          "visible": false
+        }
+      ]
+    }
+  ]
+}
