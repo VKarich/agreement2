@@ -528,7 +528,8 @@ button::-moz-focus-inner {
   }
   #right {
     position: relative;
-    width: 100%;
+    min-width: auto;
+    max-width: auto;
     border: 2px solid darkmagenta;
     padding-top: 5vh;
     -webkit-box-sizing: border-box;
