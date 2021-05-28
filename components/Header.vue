@@ -74,65 +74,94 @@
           :clickable="isStepsClickable"
           :type="{ 'is-success': isProfileSuccess }"
         >
-        <div class="sec_sec">
-        <div class="prev" v-show="prevNav">
-          <b-button class="pag_but_prev" v-text="'<'" @click="back()"></b-button>
-        </div>
-        <div class="main2">
-          <h1 class="title has-text-centered">Выберите участников договора</h1>
-          <b-field
-            class="select_field"
-            label="В качестве кого Вы хотели бы заключить договор?"
-          >
-            <b-tooltip
-              label="Физическое лицо - Вы действуете от своего имени. Юридическое лицо - Вы действуете от имени Организации"
-              position="is-bottom"
-              size="is-large"
-              multilined
+          <div class="main2">
+            <h1 class="title has-text-centered" id="title_s">
+              Выберите участников договора {{ select_agreement_stretch }}
+            </h1>
+            <b-field
+              class="select_field"
+              label="В качестве кого Вы хотели бы заключить договор?"
             >
-              <b-field>
-                <b-radio
-                  v-for="n in donors"
-                  :key="n.msg"
-                  v-model="select_from"
-                  :native-value="`${n.value}`"
-                  @input="selection_2($event)"
-                  type="is-info"
-                >
-                  {{ n.msg }}
-                </b-radio>
-              </b-field>
-            </b-tooltip>
-          </b-field>
-          <b-field
-            class="select_field"
-            label="С кем Вы планируете заключить договор?"
-          >
-            <b-tooltip
-              label="Физическое лицо - вторая сторона действует от своего имени. Юридическое лицо - вторая сторона действует от имени Организации"
-              position="is-bottom"
-              size="is-large"
-              multilined
+              <b-tooltip
+                label="Физическое лицо - Вы действуете от своего имени. Юридическое лицо - Вы действуете от имени Организации"
+                position="is-bottom"
+                size="is-large"
+                multilined
+              >
+                <b-field>
+                  <b-radio
+                    v-for="n in donors"
+                    :key="n.msg"
+                    v-model="select_from"
+                    :native-value="`${n.value}`"
+                    @input="selection_2($event)"
+                    type="is-info"
+                  >
+                    {{ n.msg }}
+                  </b-radio>
+                </b-field>
+              </b-tooltip>
+            </b-field>
+            <b-field
+              class="select_field"
+              label="С кем Вы планируете заключить договор?"
             >
-              <b-field>
-                <b-radio
-                  v-for="n in recipients"
-                  :key="n.msg"
-                  v-model="select_to"
-                  :native-value="`${n.value}`"
-                  @input="selection_3($event)"
-                  type="is-info"
-                >
-                  {{ n.msg }}
-                </b-radio>
-              </b-field>
-            </b-tooltip>
-          </b-field>
-        </div>
-        <div class="next" v-show="nextNav">
-          <b-button class="pag_but_next" v-text="'>'" @click="next()"></b-button>
-        </div>
-        </div>
+              <b-tooltip
+                label="Физическое лицо - вторая сторона действует от своего имени. Юридическое лицо - вторая сторона действует от имени Организации"
+                position="is-bottom"
+                size="is-large"
+                multilined
+              >
+                <b-field>
+                  <b-radio
+                    v-for="n in recipients"
+                    :key="n.msg"
+                    v-model="select_to"
+                    :native-value="`${n.value}`"
+                    @input="selection_3($event)"
+                    type="is-info"
+                  >
+                    {{ n.msg }}
+                  </b-radio>
+                </b-field>
+              </b-tooltip>
+            </b-field>
+            <div class="info-screen">
+              <b-button
+                label="Подробнее о договоре"
+                type="is-info"
+                size="is-medium"
+                @click="moreInfo"
+              />
+            </div>
+            <div class="info">
+              <b-collapse
+                class="card"
+                animation="slide"
+                v-for="(collapse, index) of collapses"
+                :key="index"
+                :open="isOpen == index"
+                @open="isOpen = index"
+              >
+                <template #trigger="props">
+                  <div class="card-header" role="button">
+                    <p class="card-header-title">
+                      {{ collapse.title }}
+                    </p>
+                    <a class="card-header-icon">
+                      <b-icon :icon="props.open ? 'menu-down' : 'menu-up'">
+                      </b-icon>
+                    </a>
+                  </div>
+                </template>
+                <div class="card-content">
+                  <div class="content">
+                    {{ collapse.text }}
+                  </div>
+                </div>
+              </b-collapse>
+            </div>
+          </div>
         </b-step-item>
 
         <b-step-item
@@ -141,20 +170,15 @@
           label="Заполнение договора"
           :clickable="isStepsClickableAgrmt"
         >
-        <div class="sec_sec">
-        <div class="prev" v-show="prevNav">
-          <b-button class="pag_but_prev" v-text="'<'" @click="back()"></b-button>
-        </div>
-        <div class="main_gener">
-          <div class="generform">
-            <generform
-              :show_first="show_first"
-              :select_first_step="select_agreement"
-              :select_second_step="select_from"
-              :select_third_step="select_to"
-            />
-          </div>
-        </div>
+          <div class="main_gener">
+            <div class="generform">
+              <generform
+                :show_first="show_first"
+                :select_first_step="select_agreement"
+                :select_second_step="select_from"
+                :select_third_step="select_to"
+              />
+            </div>
           </div>
         </b-step-item>
       </b-steps>
@@ -194,6 +218,14 @@ export default {
       labelPosition: "bottom",
       mobileMode: "compact",
 
+      collapses: [
+        {
+          title: "Подробнее о договоре",
+          text:
+            "Договор купли-продажи (ДКП) — соглашение о том, что продавец передаст покупателю право на определенную вещь за оплату в определенном размере и на указанных условиях. Договор купли-продажи нужен, чтобы юридически закрепить переход права собственности на товар от продавца к покупателю. <br><br> ДКП недвижимости заключается на готовый объект недвижимости, зарегистрированный в реестре (ЕГРН). Продавец при этом обязуется передать в собственность покупателя земельный участок, здание, сооружение, квартиру или другое недвижимое имущество. <br><br>Необходимость оформления сделки купли-продажи недвижимости очевидна: это единственный способ подтвердить факт приобретения или продажи недвижимости. <br><br>Составить Договор купли-продажи недвижимости необходимо с учетом соблюдения обязательных для указания условий, а именно: предмет договора (детальное описание объекта с указанием кадастрового номера и характеристик), цена договора (стоимость продажи), дата и место заключения Договора, а также четкое определение обеих сторон Договора. <br><br>Чтобы ничего не упустить и быть уверенным в результате, воспользуйтесь нашим бесплатным сервисом для составления Договора купли-продажи недвижимости!",
+        },
+      ],
+
       onSelect: true,
       activeTab: 0,
       isScrollable: false,
@@ -206,6 +238,7 @@ export default {
       select_agreement: "",
       select_from: "",
       select_to: "",
+      select_agreement_stretch: "",
       agrmns: [
         {
           id: 1,
@@ -257,6 +290,14 @@ export default {
   //     }
   //   },
   methods: {
+    moreInfo() {
+      this.$buefy.dialog.confirm({
+        title: "Подробнее о договоре",
+        message: this.collapses[0].text,
+        cancelText: "Я юрист, я и так все знаю",
+        confirmText: "Все понятно",
+      });
+    },
     back() {
       this.activeStep -= 1;
     },
@@ -264,7 +305,7 @@ export default {
       this.activeStep += 1;
     },
     selection(event) {
-      console.log(event.target.childNodes[0].wholeText.trim())
+      console.log(event.target.childNodes[0].wholeText.trim());
       this.select_agreement = event.target.childNodes[0].wholeText.trim();
       // this.select_agreement = event.srcElement.innerHTML;
       //   this.$router
@@ -275,6 +316,10 @@ export default {
       this.isStepsClickable = true;
       this.hasNavigation = false;
       this.prevNav = true;
+      this.select_agreement_stretch = this.select_agreement.replaceAll(
+        "Договор",
+        ""
+      );
     },
     selection_2(event) {
       this.activeSecond += 1;
@@ -356,11 +401,11 @@ button::-moz-focus-inner {
 }
 @media only screen and (max-width: 370px) {
   .selection {
-  display: flex;
-  flex-direction: column;
-  padding-top: 5vh;
-  padding-left: 3vh;
-  padding-right: 3vh;
+    display: flex;
+    flex-direction: column;
+    padding-top: 5vh;
+    padding-left: 3vh;
+    padding-right: 3vh;
   }
   #sec {
     display: block;
@@ -386,10 +431,10 @@ button::-moz-focus-inner {
     font-weight: 300;
   }
   .selection {
-  display: flex;
-  padding-top: 5vh;
-  padding-left: 3vh;
-  padding-right: 3vh;
+    display: flex;
+    padding-top: 5vh;
+    padding-left: 3vh;
+    padding-right: 3vh;
   }
   #sec {
     display: flex;
@@ -435,6 +480,34 @@ button::-moz-focus-inner {
     padding-left: 20px;
     font-size: 1.1em;
   }
+  .main2 {
+    position: block;
+    padding-top: 15px;
+    border-radius: 10px;
+    width: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+    min-height: 60vh;
+    max-height: auto;
+    /* box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%),
+      0 0 0 1px rgb(10 10 10 / 2%); */
+    border: 0 !important;
+    text-align: center;
+  }
+  .info {
+    margin-top: 30px;
+    text-align: center;
+    padding-bottom: 3vh;
+  }
+  #title_s {
+    font-size: 2em;
+    font-weight: 600;
+    color: rgb(73, 73, 73);
+  }
+  .info-screen {
+    display: none;
+  }
 }
 @media only screen and (min-width: 767px) and (max-width: 3767px) {
   .card {
@@ -449,6 +522,8 @@ button::-moz-focus-inner {
   }
   #sec {
     display: flex;
+    flex-direction: row;
+    width: 100%;
   }
   #left {
     position: relative;
@@ -461,7 +536,8 @@ button::-moz-focus-inner {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     border-radius: 10px;
-    box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
+    box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%),
+      0 0 0 1px rgb(10 10 10 / 2%);
     border: 0 !important;
   }
   #right {
@@ -469,13 +545,14 @@ button::-moz-focus-inner {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    min-width: auto;
     padding-left: 15px;
     padding-right: 15px;
     border-radius: 10px;
-    box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
+    box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%),
+      0 0 0 1px rgb(10 10 10 / 2%);
     border: 0 !important;
     margin-left: 15px;
+    width: 90%;
   }
   .main-text {
     padding-top: 15px;
@@ -501,6 +578,33 @@ button::-moz-focus-inner {
   .card-header-title {
     padding-left: 20px;
     font-size: 1.1em;
+  }
+  .main2 {
+    position: block;
+    padding-top: 15px;
+    border-radius: 10px;
+    width: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+    min-height: 60vh;
+    max-height: auto;
+    /* box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%),
+      0 0 0 1px rgb(10 10 10 / 2%); */
+    border: 0 !important;
+  }
+  .info {
+    display: none;
+  }
+  #title_s {
+    font-size: 2em;
+    font-weight: 600;
+    color: rgb(73, 73, 73);
+  }
+  .info-screen {
+    margin-left: auto;
+    margin-right: auto;
+    width: 360px;
   }
 }
 /* @media all and (min-width: 767px) and (max-width: 3024px) {
@@ -528,8 +632,7 @@ button::-moz-focus-inner {
   }
   #right {
     position: relative;
-    min-width: auto;
-    max-width: auto;
+    width: 100%;
     border: 2px solid darkmagenta;
     padding-top: 5vh;
     -webkit-box-sizing: border-box;

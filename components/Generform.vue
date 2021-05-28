@@ -89,8 +89,6 @@ const mainObject = mainObject_out.groups;
 
 const mainPayment = mainPayment_out.groups;
 
-const dick = JSON.stringify(flSeller_1).toLowerCase().replaceAll('продавца', 'покупателя')
-
 const fl_fl = mainInfo
   .concat(flSeller_1)
   .concat(flSeller_2)

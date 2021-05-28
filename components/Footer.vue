@@ -2,7 +2,7 @@
   <section>
     <footer class="footer">
       <div class="content has-text-left">
-        ©Deely 2021
+        ©Deelly 2021
       </div>
       <div class="content has-text-right" id="fa">
           <a href="mailto:hello@deelly.app">hello@deelly.app</a>
