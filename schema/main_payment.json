@@ -6,8 +6,9 @@
         {
           "type": "Number",
           "inputType": "number",
+          "icon": "cash-multiple",
           "min": 0,
-          "label": "Стоимость объекта",
+          "label": "Стоимость объекта:",
           "model": "cost",
           "mask": "99999999999",
           "placeholder": "Введите стоимость объекта",
@@ -16,7 +17,7 @@
         },
         {
           "type": "MultiSelect",
-          "label": "Способ оплаты",
+          "label": "Способ оплаты:",
           "placeholder": "Выберите необходимый способ оплаты",
           "values": [
             {
@@ -70,8 +71,9 @@
           "inputType": "number",
           "min": 0,
           "placeholder": "Введите сумму оплаты",
-          "label": "Сумма оплаты по сертификату на Материнский капитал",
+          "label": "Сумма оплаты по сертификату на Материнский капитал:",
           "model": "paySumMatCap",
+          "icon": "cash-multiple",
           "mask": "99999999999",
           "id": "pay_sum_mat_cap",
           "hint": "Какую сумму Вы готовы заплатить при помощи материнского капитала?",
@@ -85,7 +87,8 @@
         {
           "type": "Input",
           "inputType": "text",
-          "label": "Наименование органа, выдавшего сертификат",
+          "label": "Наименование органа, выдавшего сертификат:",
+          "icon": "passport",
           "placeholder": "Наименование органа, выдавшего сертификат",
           "model": "matcap",
           "mask": "",
@@ -102,7 +105,8 @@
           "type": "Datepicker",
           "inputType": "date",
           "format": "YYYY-MM-DD",
-          "label": "Дата постановления о выдаче сертификата",
+          "icon": "calendar-today",
+          "label": "Дата постановления о выдаче сертификата:",
           "model": "matcapDesDate",
           "mask": "",
           "id": "mat_cap_des_date",
@@ -117,7 +121,8 @@
         {
           "type": "Input",
           "inputType": "text",
-          "label": "Номер решения, на основании которого выдан сертификат",
+          "label": "Номер решения, на основании которого выдан сертификат:",
+          "icon": "file-document-multiple-outline",
           "model": "matcapDesNum",
           "mask": "",
           "id": "mat_cap_des_num",
@@ -132,7 +137,8 @@
         {
           "type": "Input",
           "inputType": "text",
-          "label": "Серия данного сертификата",
+          "label": "Серия данного сертификата:",
+          "icon": "text-box-check-outline",
           "model": "matcapSer",
           "mask": "",
           "id": "mat_cap_ser",
@@ -147,7 +153,8 @@
         {
           "type": "Input",
           "inputType": "text",
-          "label": "Номер данного сертификата",
+          "label": "Номер данного сертификата:",
+          "icon": "text-box-check-outline",
           "model": "matcapNum",
           "mask": "",
           "id": "mat_cap_num",
@@ -163,7 +170,8 @@
           "type": "Datepicker",
           "inputType": "date",
           "format": "YYYY-MM-DD",
-          "label": "Дата выдачи сертификата",
+          "label": "Дата выдачи сертификата:",
+          "icon": "calendar-today",
           "model": "matcapDate",
           "mask": "",
           "id": "mat_cap_date",
@@ -178,7 +186,8 @@
         {
           "type": "Input",
           "inputType": "text",
-          "label": "ФИО владельца сертификата",
+          "label": "ФИО владельца сертификата:",
+          "icon": "account",
           "model": "matcapOwner",
           "mask": "",
           "id": "mat_cap_owner",
@@ -203,8 +212,9 @@
         {
           "type": "Number",
           "inputType": "number",
-          "label": "Сумма, на которую предоставляется рассрочка",
+          "label": "Сумма, на которую предоставляется рассрочка:",
           "model": "paySumRS",
+          "icon": "cash-multiple",
           "mask": "99999999999",
           "min": 0,
           "id": "pay_sum_rs",
@@ -220,7 +230,8 @@
         {
           "type": "Number",
           "inputType": "number",
-          "label": "Количество платежей",
+          "label": "Количество платежей:",
+          "icon": "file-table-box-multiple-outline",
           "placeholder": "На сколько частей Вы планируете разбить платеж?",
           "model": "quantityPayments",
           "mask": "99",
@@ -247,7 +258,8 @@
         },
         {
           "type": "Select",
-          "label": "Наличие залога в пользу Продавца",
+          "label": "Наличие залога в пользу Продавца:",
+          "icon": "cash-multiple",
           "model": "zlgPay",
           "mask": "",
           "id": "zlg_pay",
@@ -273,9 +285,10 @@
           "type": "Datepicker",
           "inputType": "date",
           "format": "DD.MM-YYYY",
-          "label": "Окончательный платеж",
+          "label": "Окончательный платеж:",
           "placeholder": "Дата окончательного платежа",
           "model": "zlgPayTermDate",
+          "icon": "calendar-today",
           "mask": "",
           "id": "zlg_pay_term_date",
           "hint": "Укажите, пожалуйста, последний срок оплаты по данному договору",
@@ -288,7 +301,7 @@
         },
         {
           "type": "pseudoLabel",
-          "label": "Ипотека банка",
+          "label": "Ипотека банка:",
           "mask": "",
           "visible": {
             "dep_name": "payMethod",
@@ -299,7 +312,8 @@
         {
           "type": "Number",
           "inputType": "number",
-          "label": "Полная сумма кредита",
+          "label": "Полная сумма кредита:",
+          "icon": "cash-multiple",
           "model": "paySumIB",
           "mask": "99999999999",
           "id": "pay_sum_ib",
@@ -316,7 +330,8 @@
         {
           "type": "Input",
           "inputType": "text",
-          "label": "Наименование банка, предоставившего ипотеку",
+          "label": "Наименование банка, предоставившего ипотеку:",
+          "icon": "cash-multiple",
           "model": "crBankName",
           "mask": "",
           "id": "cr_bank_name",
@@ -332,7 +347,8 @@
         {
           "type": "Input",
           "inputType": "text",
-          "label": "Номер кредитного договора",
+          "label": "Номер кредитного договора:",
+          "icon": "bank-outline",
           "placeholder": "Номер кредитного договора",
           "model": "crBankNumber",
           "mask": "",
@@ -349,7 +365,8 @@
           "type": "Datepicker",
           "inputType": "date",
           "format": "YYYY-MM-DD",
-          "label": "Дата заключения кредитного договора",
+          "label": "Дата заключения кредитного договора:",
+          "icon": "calendar-today",
           "model": "crBankDocDate",
           "mask": "",
           "id": "cr_bank_doc_date",
@@ -366,7 +383,8 @@
         {
           "type": "Input",
           "inputType": "text",
-          "label": "Город, в котором был заключен ипотечный договор",
+          "label": "Город, в котором был заключен ипотечный договор:",
+          "icon": "city",
           "placeholder": "Название города",
           "model": "crBankDocTown",
           "mask": "",
@@ -383,11 +401,12 @@
         {
           "type": "Number",
           "inputType": "number",
-          "label": "На сколько месяцев Вам предоставили ипотеку",
+          "label": "На сколько месяцев Вам предоставили ипотеку:",
           "model": "crBankDocQMonth",
           "mask": "",
           "id": "cr_bank_doc_q_month",
           "placeholder": "Введите количество месяцев",
+          "icon": "file-table-box-multiple-outline",
           "hint":
             "Укажите, пожалуйста, количество месяцев, указаных в ипотечном договоре",
           "required": true,
@@ -401,7 +420,8 @@
         {
           "type": "Number",
           "inputType": "number",
-          "label": "ОГРН банка",
+          "label": "ОГРН банка:",
+          "icon": "bank-outline",
           "placeholder": "Введите ОГРН банка",
           "model": "crBankOgrn",
           "mask": "",
@@ -418,7 +438,8 @@
         {
           "type": "Number",
           "inputType": "number",
-          "label": "ИНН банка",
+          "label": "ИНН банка:",
+          "icon": "bank-outline",
           "placeholder": "Введите ИНН банка",
           "model": "crBankInn",
           "mask": "",
@@ -435,7 +456,8 @@
         {
           "type": "Number",
           "inputType": "number",
-          "label": "Укажите КПП банка",
+          "label": "Укажите КПП банка:",
+          "icon": "bank-outline",
           "model": "crBankKpp",
           "mask": "",
           "min": 0,
@@ -454,12 +476,13 @@
         {
           "type": "Number",
           "inputType": "number",
-          "label": "Укажите расчетный счет банка",
+          "label": "Укажите расчетный счет банка:",
           "model": "crBankRs",
           "mask": "",
           "min": 0,
           "id": "cr_bank_rs",
           "placeholder": "Номер расчетного счета банка",
+          "icon": "bank-outline",
           "hint": "Укажите, пожалуйста, расчетный счет банка",
           "required": true,
           "visible": {
@@ -471,7 +494,8 @@
         {
           "type": "Number",
           "inputType": "number",
-          "label": "Укажите КС банка",
+          "label": "Укажите КС банка:",
+          "icon": "bank-outline",
           "placeholder": "КС банка",
           "model": "crBankKs",
           "mask": "",
@@ -488,8 +512,9 @@
         {
           "type": "Number",
           "inputType": "number",
-          "label": "Укажите БИК банка",
+          "label": "Укажите БИК банка:",
           "placeholder": "БИК банка",
+          "icon": "bank-outline",
           "model": "crBankBik",
           "mask": "999999999",
           "min": 0,
@@ -505,11 +530,12 @@
         {
           "type": "Input",
           "inputType": "text",
-          "label": "Укажите юридический адрес банка",
+          "label": "Укажите юридический адрес банка:",
           "model": "crBankAddress",
           "mask": "",
           "id": "cr_bank_address",
           "placeholder": "Юр. адрес банка",
+          "icon": "bank-outline",
           "hint": "Укажите, пожалуйста, юридический адрес банка",
           "required": true,
           "visible": {
@@ -521,8 +547,9 @@
         {
           "type": "Input",
           "inputType": "text",
-          "label": "Укажите почтовый адрес банка",
+          "label": "Укажите почтовый адрес банка:",
           "model": "crBankPostAddress",
+          "icon": "bank-outline",
           "mask": "",
           "id": "cr_bank_post_address",
           "placeholder": "Укажите почтовый адрес банка",
@@ -547,7 +574,8 @@
         {
           "type": "Number",
           "inputType": "number",
-          "label": "Сумма кредита по ипотеке физ. лица",
+          "label": "Сумма кредита по ипотеке физ. лица:",
+          "icon": "cash-multiple",
           "model": "paySumFL",
           "mask": "99999999999",
           "id": "pay_sum_fl",
@@ -563,7 +591,8 @@
         {
           "type": "Number",
           "inputType": "number",
-          "label": "Количество платежей по ипотеке физ. лица",
+          "label": "Количество платежей по ипотеке физ. лица:",
+          "icon": "file-table-box-multiple-outline",
           "placeholder": "На сколько частей Вы планируете разбить платеж?",
           "model": "quantityPaymentsFL",
           "mask": "99",
@@ -603,7 +632,8 @@
           "type": "Number",
           "inputType": "number",
           "placeholder": "Введите сумму оплаты",
-          "label": "Сумма оплаты (Аккредитив)",
+          "label": "Сумма оплаты (Аккредитив):",
+          "icon": "cash-multiple",
           "model": "paySumA",
           "mask": "99999999999",
           "id": "pay_sum_a",
@@ -618,11 +648,12 @@
         {
           "type": "Number",
           "inputType": "number",
-          "label": "Срок действия аккредитива (в днях)",
+          "label": "Срок действия аккредитива (в днях):",
           "model": "acrDays",
           "mask": "",
           "id": "acr_days",
           "placeholder": "Количество дней",
+          "icon": "file-table-box-multiple-outline",
           "hint": "Укажите, пожалуйста, количество дней",
           "min": 0,
           "required": true,
@@ -635,7 +666,8 @@
         {
           "type": "Input",
           "inputType": "text",
-          "label": "Наименование банка-эмитента по аккредитиву",
+          "label": "Наименование банка-эмитента по аккредитиву:",
+          "icon": "bank-outline",
           "model": "acrBankName",
           "mask": "",
           "id": "acr_bankname",
@@ -651,7 +683,8 @@
         {
           "type": "Input",
           "inputType": "text",
-          "label": "Город, в котором находится банк",
+          "label": "Город, в котором находится банк:",
+          "icon": "city",
           "placeholder": "Введите название города",
           "model": "acrBankTown",
           "mask": "",
@@ -667,7 +700,8 @@
         {
           "type": "Number",
           "inputType": "number",
-          "label": "Номер счета продавца в банке",
+          "label": "Номер счета продавца в банке:",
+          "icon": "bank-outline",
           "model": "acrBankSellerNumber",
           "min": 0,
           "mask": "",
@@ -685,8 +719,9 @@
           "type": "Input",
           "inputType": "text",
           "label":
-            "Наименование банка получателя денежных средств по аккредитиву",
+            "Наименование банка получателя денежных средств по аккредитиву:",
           "model": "acrBankSellerName",
+          "icon": "cash-multiple",
           "mask": "",
           "id": "acr_bankselname",
           "placeholder": "Наименование банка получателя",
@@ -711,7 +746,8 @@
         {
           "type": "Number",
           "inputType": "number",
-          "label": "Сумма платежа по наличному расчету",
+          "label": "Сумма платежа по наличному расчету:",
+          "icon": "cash-multiple",
           "model": "nal",
           "mask": "99999999999",
           "min": 0,
@@ -722,6 +758,43 @@
             "dep_name": "payMethod",
             "dep_type": "MultiSelect",
             "dep_check": "Наличный расчет"
+          }
+        },
+        {
+          "type": "Select",
+          "model": "avance",
+          "icon": "cash-multiple",
+          "label": "Авансовый платеж в пользу Продавца до заключения договора:",
+          "selectOptions": { "hideNoneSelectedText": true },
+          "values": [
+            { "name": "Имеется" },
+            { "name": "Не имеется" }
+          ],
+          "mask": "",
+          "id": "avance",
+          "required": true,
+          "placeholder": "Выберите вариант",
+          "visible": {
+            "dep_name": "payMethod",
+            "dep_type": "MultiSelect",
+            "dep_check": "Наличный расчет"
+          }
+        },
+        {
+          "type": "Number",
+          "inputType": "number",
+          "label": "Сумма авансового платежа:",
+          "icon": "cash-multiple",
+          "model": "avancesum",
+          "mask": "99999999999",
+          "min": 0,
+          "id": "avance_sum",
+          "placeholder": "Введите сумму аванса",
+          "required": true,
+          "visible": {
+            "dep_name": "avance",
+            "dep_type": "Select",
+            "dep_check": "Имеется"
           }
         },
         {
@@ -737,7 +810,8 @@
         {
           "type": "Number",
           "inputType": "number",
-          "label": "Сумма платежа по безналичному расчету",
+          "label": "Сумма платежа по безналичному расчету:",
+          "icon": "cash-multiple",
           "model": "bznal",
           "min": 0,
           "mask": "99999999999",
@@ -753,8 +827,9 @@
         {
           "type": "Number",
           "inputType": "number",
-          "label": "Номер счета продавца в банке",
+          "label": "Номер счета продавца в банке:",
           "model": "bznalBankNum",
+          "icon": "bank-outline",
           "mask": "",
           "id": "bznal_banknum",
           "min": 0,
@@ -770,7 +845,8 @@
         {
           "type": "Input",
           "inputType": "text",
-          "label": "Наименование банка продавца",
+          "label": "Наименование банка продавца:",
+          "icon": "cash-multiple",
           "model": "bznalBankName",
           "mask": "",
           "id": "bznal_bankname",

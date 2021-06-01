@@ -49,10 +49,20 @@ import ulSeller_out from "@/schema/ul_seller.json";
 import mainObject_out from "@/schema/main_object.json";
 import mainPayment_out from "@/schema/main_payment.json";
 
-const flBuyer_out = JSON.parse(JSON.stringify(flSeller_out).replaceAll('Продавца', 'Покупателя').replaceAll('продавца', 'покупателя').replaceAll('seller', 'cust'));
-const ulBuyer_out = JSON.parse(JSON.stringify(ulSeller_out).replaceAll('Продавца', 'Покупателя').replaceAll('продавца', 'покупателя').replaceAll('seller', 'cust'));
+let flBuyer_out = JSON.parse(
+  JSON.stringify(flSeller_out)
+    .replaceAll("Продавца", "Покупателя")
+    .replaceAll("продавца", "покупателя")
+    .replaceAll("seller", "cust")
+);
+let ulBuyer_out = JSON.parse(
+  JSON.stringify(ulSeller_out)
+    .replaceAll("Продавца", "Покупателя")
+    .replaceAll("продавца", "покупателя")
+    .replaceAll("seller", "cust")
+);
 
-const mainInfo = mainInfo_out.groups;
+let mainInfo = mainInfo_out.groups;
 const flSeller_1 = {
   legend: flSeller_out.groups[0].legend,
   fields: flSeller_out.groups[0].fields.slice(0, 4),
@@ -184,7 +194,7 @@ export default {
             select_second_step: this.select_second_step,
             select_third_step: this.select_third_step,
           },
-          { responseType: "blob" },
+          { responseType: "blob" }
         )
         .then((response) => {
           if (response.status == 200) {
@@ -219,6 +229,9 @@ export default {
     if (this.select_second_step == "ЮЛ" && this.select_third_step == "ЮЛ") {
       this.schema_test = this.ul_ul;
     }
+    if (JSON.stringify(this.select_first_step).match('аренды')) {
+      this.schema_test = JSON.parse(JSON.stringify(this.schema_test).replaceAll('продавца', 'арендодателя').replaceAll("Продавца", "Aрендодателя").replaceAll("Покупателя", "Арендатора").replaceAll("покупателя", "арендатора"))
+    }
   },
   mounted() {
     // if (localStorage.model) {
@@ -233,28 +246,26 @@ export default {
       handler(newValue) {
         // localStorage.model = JSON.stringify(newValue);
         //newValue.custRepresent == "Нет"
-        if (
-          newValue.sellerRepresent == "Нет"
-        ) {
+        if (newValue.sellerRepresent == "Нет") {
           let x = Object.keys(newValue).filter(
-            (key) => JSON.stringify(key).match("sellerRepresent") && key.length > 15
+            (key) =>
+              JSON.stringify(key).match("sellerRepresent") && key.length > 15
           );
           for (let n in x) {
             this.model[x[n]] = null;
           }
         }
-        if (
-          newValue.custRepresent == "Нет"
-        ) {
+        if (newValue.custRepresent == "Нет") {
           let x = Object.keys(newValue).filter(
-            (key) => JSON.stringify(key).match("custRepresent") && key.length > 15
+            (key) =>
+              JSON.stringify(key).match("custRepresent") && key.length > 15
           );
           for (let n in x) {
             this.model[x[n]] = null;
           }
         }
       },
-    }
+    },
   },
 };
 </script>
@@ -278,7 +289,7 @@ a {
 select {
   text-align-last: center;
 }
-@media screen and (max-width: 3280px) {
+@media screen and (max-width: 3980px) {
   #sec_ {
     display: flex;
   }
@@ -300,7 +311,7 @@ select {
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
     height: auto;
-    max-height: 68vh;
+    max-height: 65vh;
   }
   #right_menu {
     position: relative;
@@ -319,7 +330,7 @@ select {
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
     text-align: left;
-    max-height: 68vh;
+    max-height: 65vh;
   }
   .fixed {
     width: 100%;
@@ -411,7 +422,7 @@ select {
     background: #ffdd57;
   }
 }
-@media only screen and (min-device-width: 320px) and (max-device-width: 1024px) {
+@media only screen and (min-width: 370px) and (max-width: 767px) {
   #sec_ {
     display: block;
   }

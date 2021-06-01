@@ -6,7 +6,7 @@
         {
           "type": "Autocomplete",
           "inputType": "text",
-          "label": "Организационно-правовая форма (полностью)",
+          "label": "Организационно-правовая форма (полностью):",
           "data": ["Общество с ограниченной ответственностью", "Акционерное общество", "Публичное акционерное общество", "Индивидуальный предприниматель"],
           "model": "sellerOrgLegalForm",
           "mask": "",
@@ -19,7 +19,7 @@
         {
           "type": "Input",
           "inputType": "text",
-          "label": "Наименование огранизации",
+          "label": "Наименование огранизации:",
           "model": "sellerOrgName",
           "mask": "",
           "id": "seller_org_name",
@@ -30,7 +30,7 @@
         {
           "type": "Autocomplete",
           "inputType": "text",
-          "label": "Организация представлена в лице (должность)",
+          "label": "Организация представлена в лице (должность):",
           "data": ["Директора", "Представителя"],
           "model": "sellerOrgPossition",
           "mask": "",
@@ -43,7 +43,7 @@
         {
           "type": "Input",
           "inputType": "text",
-          "label": "Организация представлена в лице (ФИО)",
+          "label": "Организация представлена в лице (ФИО):",
           "model": "sellerCeoFullName",
           "mask": "",
           "id": "seller_ceo_fullname",
@@ -54,7 +54,7 @@
         {
           "type": "Autocomplete",
           "inputType": "text",
-          "label": "Представитель действует на основании",
+          "label": "Представитель действует на основании:",
           "data": ["Устава", "Учредительного договора", "Доверенности"],
           "placeholder": "Например: Устава",
           "mask": "",
@@ -86,7 +86,7 @@
           "inputType": "date",
           "format": "YYYY-MM-DD",
           "label":
-            "Дата выдачи доверенности",
+            "Дата выдачи доверенности:",
           "model": "sellerOrgDocDate",
           "mask": "",
           "id": "sellerOrgDocDate",
@@ -102,7 +102,8 @@
         {
           "type": "Number",
           "inputType": "number",
-          "label": "Серия паспорта представителя",
+          "label": "Серия паспорта представителя:",
+          "icon": "passport",
           "maxlength": 4,
           "minlength": 4,
           "placeholder": "Укажите серию паспорта",
@@ -120,7 +121,8 @@
         {
           "type": "Number",
           "inputType": "number",
-          "label": "Номер паспорта представителя",
+          "label": "Номер паспорта представителя:",
+          "icon": "passport",
           "maxlength": 6,
           "minlength": 6,
           "placeholder": "Укажите номер паспорта",
@@ -138,7 +140,8 @@
         {
           "type": "Input",
           "inputType": "text",
-          "label": "Кем выдан паспорт представителя",
+          "label": "Кем выдан паспорт представителя:",
+          "icon": "hand",
           "model": "sellerOrgPassIssuedBy",
           "mask": "",
           "id": "sellerOrgPassIssuedBy",
@@ -155,11 +158,12 @@
         {
           "type": "Datepicker",
           "inputType": "date",
-          "label": "Дата выдачи паспорта представителя",
+          "label": "Дата выдачи паспорта представителя:",
           "placeholder": "Выберите дату выдачи паспорта",
           "hint": "Дата выдачи паспорта является одним из главных идентифицирующих документ признаков",
           "model": "sellerOrgDocPassDate",
           "mask": "",
+          "icon": "calendar-today",
           "id": "sellerOrgDocPassDate",
           "required": true,
           "visible": {
@@ -171,9 +175,10 @@
         {
           "type": "Input",
           "inputType": "text",
-          "label": "Код подразделения",
+          "label": "Код подразделения:",
           "maxlength": 7,
           "minlength": 7,
+          "icon": "counter",
           "model": "sellerOrgUnitCode",
           "mask": "999-999",
           "id": "sellerOrgUnitCode",
@@ -189,12 +194,13 @@
         {
           "type": "Input",
           "inputType": "text",
-          "label": "Адрес регистрации представителя",
+          "label": "Адрес регистрации представителя:",
           "model": "sellerOrgRegAddress",
           "mask": "",
           "id": "sellerOrgRegAddress",
           "placeholder": "Укажите адрес регистрации представителя",
           "required": true,
+          "icon": "city",
           "hint": "Указывается в точности как в паспорте. Например: г.Москва, ул.Лесная, д.6к1, кв.12",
           "visible": {
             "dep_name": "sellerOrgDoc",
@@ -204,13 +210,14 @@
         },
         {
           "type": "pseudoLabel",
-          "label": "Реквизиты продавца",
+          "label": "Реквизиты продавца:",
           "mask": ""
         },
         {
           "type": "Input",
           "inputType": "text",
-          "label": "Юридический адрес организации",
+          "label": "Юридический адрес организации:",
+          "icon": "city-variant",
           "model": "sellerOrgRegAddressUR",
           "mask": "",
           "placeholder": "Укажите юридический адрес организации",
@@ -220,7 +227,8 @@
         {
           "type": "Input",
           "inputType": "text",
-          "label": "ОГРН организации",
+          "label": "ОГРН организации:",
+          "icon": "bank-outline",
           "mask": "",
           "maxlength": 13,
           "minlength": 13,
@@ -232,7 +240,8 @@
         {
           "type": "Input",
           "inputType": "text",
-          "label": "ИНН организации",
+          "label": "ИНН организации:",
+          "icon": "bank-outline",
           "model": "sellerOrgINN",
           "mask": "",
           "placeholder": "Укажите ИНН организации",
@@ -244,7 +253,8 @@
         {
           "type": "Input",
           "inputType": "text",
-          "label": "КПП организации",
+          "label": "КПП организации:",
+          "icon": "bank-outline",
           "model": "sellerOrgKPP",
           "mask": "",
           "placeholder": "Укажите КПП организации",
@@ -256,7 +266,8 @@
         {
           "type": "Input",
           "inputType": "text",
-          "label": "Укажите номер расчетного счета организации",
+          "label": "Укажите номер расчетного счета организации:",
+          "icon": "bank-outline",
           "model": "sellerOrgRS",
           "mask": "",
           "placeholder": "Номер расчетного счета",
@@ -268,7 +279,8 @@
         {
           "type": "Input",
           "inputType": "text",
-          "label": "Укажите номер корреспондентского счета организации",
+          "label": "Укажите номер корреспондентского счета организации:",
+          "icon": "bank-outline",
           "model": "sellerOrgKS",
           "mask": "",
           "placeholder": "Номер корсчета",
@@ -281,9 +293,10 @@
           "type": "Input",
           "inputType": "text",
           "label":
-            "Наименование банка, в котором обслуживается организация",
+            "Наименование банка, в котором обслуживается организация:",
           "model": "sellerOrgBank",
           "mask": "",
+          "icon": "bank-outline",
           "placeholder": "Укажите наименование банка полностью",
           "required": true,
           "hint": "Например: Филиал ЦЕНТРАЛЬНЫЙ Банка ВТБ ПАО Г. МОСКВА"
@@ -291,8 +304,11 @@
         {
           "type": "Input",
           "inputType": "text",
-          "label": "БИК банка",
+          "label": "БИК банка:",
           "model": "sellerOrgBankBik",
+          "icon": "bank-outline",
+          "minlength": 9,
+          "maxlength": 9,
           "mask": "",
           "placeholder": "Укажите БИК банка, обслуживающего организацию",
           "required": true,
@@ -301,8 +317,9 @@
         {
           "type": "Input",
           "inputType": "text",
-          "label": "Телефон организации",
+          "label": "Телефон организации:",
           "model": "sellerOrgTel",
+          "icon": "phone-in-talk",
           "mask": "+9(999)999-99-99",
           "placeholder": "Укажите номер организации или ее представителя",
           "required": true,
@@ -311,7 +328,8 @@
         {
           "type": "Input",
           "inputType": "text",
-          "label": "Почтовый адрес организации",
+          "label": "Почтовый адрес организации:",
+          "icon": "city-variant",
           "model": "sellerOrgPostAddress",
           "mask": "",
           "placeholder": "Укажите адрес организации для корреспонденции",

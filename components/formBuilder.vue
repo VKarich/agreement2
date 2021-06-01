@@ -20,11 +20,12 @@
       <div class="hiden">{{ model[field.model] }}</div>
       <component
         class="sec1"
+        pack="fas"
         v-if="fieldVisible(field)"
         :is="field.type"
         :type="field.inputType"
         :id="field.id"
-        :placeholder="field.label"
+        :placeholder="field.placeholder"
         :fieldmodel="field.model"
         :name="field.name"
         v-mask="field.mask"
@@ -90,6 +91,7 @@ import Autocomplete from "@/formElements/Autocomplete.vue";
 import pseudoLabel from "@/formElements/pseudoLabel.vue";
 import GeneratedField from "@/formElements/GeneratedField.vue";
 import GeneratedFieldFL from "@/formElements/GeneratedFieldFL.vue";
+import Button from "@/formElements/Button.vue";
 import AwesomeMask from "awesome-mask";
 
 const rubles = require("rubles").rubles;
@@ -108,7 +110,8 @@ export default {
     Number,
     Autocomplete,
     GeneratedField,
-    GeneratedFieldFL
+    GeneratedFieldFL,
+    Button
   },
   props: [
     "config",
@@ -230,6 +233,9 @@ export default {
     }
     if (this.model.paySumRS) {
       this.model.paySumRSWSum = rubles(this.model.paySumRS);
+    }
+    if (this.model.avancesum) {
+      this.model.avancesumW = rubles(this.model.avancesum);
     }
     if (this.i == 0) {
       if (this.model.city && this.model.date && this.model.email) {
@@ -451,4 +457,7 @@ export default {
 .hiden {
   display: none;
 }
+#right-button_2 {
+    float: right;
+  }
 </style>

@@ -3,7 +3,7 @@
     <div class="unselectable" id="unselectable">
       <div id="header">
         <p>
-          <strong>ДОГОВОР КУПЛИ-ПРОДАЖИ НЕДВИЖИМОГО ИМУЩЕСТВА</strong>
+          <strong>ДОГОВОР КУПЛИ-ПРОДАЖИ НЕДВИЖИМОГО ИМУЩЕСТВА № {{ model.number | str_corrector }}</strong>
         </p>
       </div>
       <div id="date">
@@ -690,6 +690,80 @@
           <p>В лице: {{ model.custFullName | str_corrector }}</p>
         </div>
       </div>
+
+      <div class="receipt" v-if="JSON.stringify(model.payMethod).match('Наличный расчет')">
+        <div id="header">
+        <p>
+          <strong>Расписка о получении денежных средств в счет оплаты 
+по договору купли-продажи № {{ model.number | str_corrector }} от {{ model.date | formatDate | str_corrector }} г.
+</strong>
+        </p>
+      </div>
+      <div id="date">
+        <p id="left">
+          <strong
+            >Город: {{ model.city.firstLetterCaps() | str_corrector }}</strong
+          >
+        </p>
+        <p id="right">
+          <strong>Дата: {{ model.date | formatDate | str_corrector }}</strong>
+        </p>
+      </div>
+      <p>
+         Гр. {{ model.sellerFullName | str_corrector }}, именуемый в дальнейшем <b>«Продавец»</b> и
+      </p>
+      <p>
+        Гр. {{ model.custFullName | str_corrector }}, именуемый в дальнейшем <b>«Покупатель»</b>, с другой стороны, совместно именуемые <b>«Стороны»</b>,
+      </p>
+      <br>
+      <p>
+        составили настоящую расписку о нижеследующем:
+      </p>
+      <br>
+      <p>
+        <b>1. «Покупатель»</b> передал, а <b>«Продавец»</b> принял денежные средства в размере <b
+            >{{ model.nal | numeral("₽0,0.00") }} ({{
+              model.nal | rubles | str_corrector
+            }})</b
+          > в счет оплаты недвижимого имущества ({{ model.propertyName | str_corrector }}, общей площадью
+          {{ model.propertyFloorArea | str_corrector }} кв.м) по Договору купли-продажи № {{ model.number | str_corrector }} от {{ model.date | formatDate | str_corrector }} г., заключенному между <b>«Продавцом»</b> и <b>«Покупателем»</b>.
+      </p>
+      <br>
+      <p>
+      <b>2. «Стороны»</b> подтверждают, что оплата по Договору произведена в полном объеме. Претензии по оплате у Сторон отсутствуют.
+      </p>
+      <br>
+      <p v-if="JSON.stringify(model.avance).match('Имеется')">
+        <b>3. «Продавец»</b> подтверждает, что авансовый платеж в размере <b
+            >{{ model.avancesum | numeral("₽0,0.00") }} ({{
+              model.avancesum | rubles | str_corrector
+            }})</b
+          > был передан <b>«Покупателем» «Продавцу»</b>  до подписания Договора купли-продажи недвижимого имущества № {{ model.number | str_corrector }} от {{ model.date | formatDate | str_corrector }} г.
+      </p>
+      <br>
+      <div class="lf" v-if="select_second_step == 'ФЛ'">
+          <p>
+            <b>Продавец:</b>
+          </p>
+          <p>
+            _______________________
+          </p>
+          <p>
+            Гр. {{ model.sellerFullName | str_corrector }}
+          </p>
+        </div>
+        <div class="rf" v-if="select_third_step == 'ФЛ'">
+          <p>
+            <b>Покупатель:</b>
+          </p>
+          <p>
+            _______________________
+          </p>
+          <p>
+            Гр. {{ model.custFullName | str_corrector }}
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -945,5 +1019,8 @@ tr td {
   border: black solid 1px;
   padding: 10px;
   text-align: center;
+}
+.receipt {
+  padding-top: 60px;
 }
 </style>

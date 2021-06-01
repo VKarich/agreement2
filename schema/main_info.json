@@ -7,6 +7,20 @@
         {
           "type": "Input",
           "inputType": "text",
+          "label": "Номер договора:",
+          "maxlength": 10,
+          "model": "number",
+          "mask": "",
+          "icon": "file-document-multiple-outline",
+          "id": "arg_number",
+          "placeholder": "№ договора",
+          "required": true,
+          "hint": "Введите номер договора (если номер отсутствует - введите Б/Н)",
+          "message": "Не оставляйте меня пустым! Без меня договор будет не полным. Заполните это поле, используя только кириллицу"
+        },
+        {
+          "type": "Input",
+          "inputType": "text",
           "label": "Город, в котором заключается договор:",
           "maxlength": 20,
           "model": "city",
@@ -37,8 +51,9 @@
         {
           "type": "Email",
           "inputType": "email",
-          "label": "Электронная почта",
+          "label": "Электронная почта:",
           "model": "email",
+          "icon": "email",
           "mask": "",
           "id": "email",
           "required": true,
