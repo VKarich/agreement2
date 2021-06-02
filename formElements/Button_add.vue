@@ -1,6 +1,6 @@
 <template>
   <div class="buttons">
-      <b-button type="is-black" expanded @click="sendNumber">{{ label }}</b-button>
+      <b-button type="is-black" expanded @click="test">{{ label }}</b-button>
   </div>
 </template>
 
@@ -23,15 +23,16 @@ export default {
     "fieldmodel",
     "model",
     "pattern",
-    "field"
+    "field",
+    "i",
+    "fields"
   ],
   data() {
     return {
     };
   },
   methods: {
-    sendNumber() {
-      console.log(this.model.propertyUniqueIdentifier)
+    test() {
     },
     hintExist() {
       if (this.hint == null) {

@@ -11,6 +11,7 @@
         {{ Math.round(i * 16.6) + "%" }}
       </b-progress>
     </section>
+    <input v-model="i" />
     <p class="pos" v-text="schema_test[i].legend"></p>
     <section
       class="sec"
@@ -46,6 +47,9 @@
         :value="field.value"
         :params="field.params"
         :model="model"
+        :field="field"
+        :i="i"
+        :fields="schema_test"
         @input="updateField()"
       >
       </component>
@@ -92,6 +96,7 @@ import pseudoLabel from "@/formElements/pseudoLabel.vue";
 import GeneratedField from "@/formElements/GeneratedField.vue";
 import GeneratedFieldFL from "@/formElements/GeneratedFieldFL.vue";
 import Button from "@/formElements/Button.vue";
+import Button_add from "@/formElements/Button_add.vue";
 import AwesomeMask from "awesome-mask";
 
 const rubles = require("rubles").rubles;
@@ -111,7 +116,8 @@ export default {
     Autocomplete,
     GeneratedField,
     GeneratedFieldFL,
-    Button
+    Button,
+    Button_add
   },
   props: [
     "config",
