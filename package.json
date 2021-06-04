@@ -29,6 +29,7 @@
     "nuxt-dropzone": "^1.0.4",
     "rubles": "^0.2.0",
     "vee-validate": "^3.4.5",
+    "vue-dadata": "^1.4.10",
     "vue-form-generator": "^2.3.4",
     "vue-multiselect": "^2.1.6",
     "vue-numeral-filter": "^2.0.0",

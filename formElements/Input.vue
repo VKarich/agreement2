@@ -21,7 +21,7 @@
           :validation-message="message"
           :has-counter="false"
           :required="required"
-          @input="$emit('input', $event)"
+          @change.native="send(fieldmodel)"
         ></b-input>
       </b-tooltip>
     </b-field>
@@ -47,18 +47,23 @@ export default {
     "message",
     "fieldmodel",
     "model",
-    "pattern"
+    "pattern",
   ],
   data() {
     return {
     };
   },
   methods: {
+    send(fieldmodel) {
+      if (fieldmodel.indexOf('propertyUniqueIdentifier') > -1) {
+        console.log(this.model[fieldmodel])
+      }
+    },
     hintExist() {
       if (this.hint == null) {
         return false
       } return true
-    }
+    },
   }
 };
 </script>

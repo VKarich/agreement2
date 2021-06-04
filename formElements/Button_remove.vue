@@ -1,6 +1,6 @@
 <template>
   <div class="buttons">
-      <b-button type="is-black" expanded @click="test">{{ label }}</b-button>
+      <b-button type="is-info" expanded @click="test">{{ 'Убрать объект недвижимости' }}</b-button>
   </div>
 </template>
 
@@ -30,7 +30,6 @@ export default {
   ],
   data() {
     return {
-      elem: JSON.parse(JSON.stringify(this.fields[this.i].fields)),
     };
   },
   methods: {
@@ -41,25 +40,14 @@ export default {
             (key) =>
               JSON.stringify(key).match("type")
           );
-          if (this.fields[this.i].fields[c][x] == 'Button_add') {
-            this.fields[this.i].fields[c][x] = "Button_remove"
+          if (this.fields[this.i].fields[c][x] == 'Button_remove') {
+            this.fields[this.i].fields[c][x] = "Button_add"
           }
       }
-      for (let y = 0; y <= 13; y++) {
-        this.elem[y].id = this.fields[this.i].fields[y].id + len;
-        this.elem[y].model = this.fields[this.i].fields[y].model + len;
-        if (this.elem[y].visible) {
-          this.elem[y].visible.dep_name = this.fields[this.i].fields[y].visible.dep_name + len;
-        }
-        this.fields[this.i].fields.push(this.elem[y]);
+      for (let y = 0; y <= (len-1); y++) {
+        this.fields[this.i].fields.splice((len-14), 14)
       }
       this.changeAdd()
-    },
-    hintExist() {
-      if (this.hint == null) {
-        return false;
-      }
-      return true;
     },
   },
 };

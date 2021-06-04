@@ -166,6 +166,63 @@
           }}.
         </p>
       </div>
+      
+
+
+
+
+      <div v-if="add">
+        <p v-if="model.propertyName15 == 'Квартира'">
+          {{ model.propertyName15 | str_corrector }}, общей площадью
+          {{ model.propertyFloorArea15 | str_corrector }} кв.м, количество комнат:
+          {{ model.propertyNumRoom15 | str_corrector }}, этаж:
+          {{ model.propertyLevel15 | str_corrector }}, расположенная по адресу:
+          {{ model.propertyAddress15 | str_corrector }}, кадастровый номер:
+          {{ model.propertyUniqueIdentifier15 | str_corrector }}. Данный объект
+          принадлежит <b>Продавцу</b> на основании
+          {{ model.propertyDoc15 | str_corrector }}, о чем в Едином
+          государственном реестре недвижимости сделана запись регистрации от
+          {{ model.regDocDate15 | formatDate | str_corrector }} №{{
+            model.regDocNumber15 | str_corrector
+          }}.
+        </p>
+        <p v-else-if="model.propertyName15 == 'Земельный участок'">
+          {{ model.propertyName15 | str_corrector }}, общей площадью
+          {{ model.propertyFloorArea15 | str_corrector }} кв.м, категория земель:
+          {{ model.propertyLandCat15 | str_corrector }}, разрешенное
+          использование: {{ model.propertyLandUsed15 | str_corrector }},
+          расположенный по адресу: {{ model.propertyAddress15 | str_corrector }},
+          кадастровый номер:
+          {{ model.propertyUniqueIdentifier15 | str_corrector }}. Данный объект
+          принадлежит <b>Продавцу</b> на основании
+          {{ model.propertyDoc15 | str_corrector }}, о чем в Едином
+          государственном реестре недвижимости сделана запись регистрации от
+          {{ model.regDocDate15 | formatDate | str_corrector }} №{{
+            model.regDocNumber15 | str_corrector
+          }}.
+        </p>
+        <p v-else-if="model.propertyName15 == 'Жилой дом'">
+          {{ model.propertyName15 | str_corrector }}, общей площадью
+          {{ model.propertyFloorArea15 | str_corrector }} кв.м, количество комнат:
+          {{ model.propertyNumRoom15 | str_corrector }}, этажей:
+          {{ model.propertyLevel15 | str_corrector }}, расположенный по адресу:
+          {{ model.propertyAddress15 | str_corrector }}, кадастровый номер:
+          {{ model.propertyUniqueIdentifier15 | str_corrector }}. Данный объект
+          принадлежит <b>Продавцу</b> на основании
+          {{ model.propertyDoc15 | str_corrector }}, о чем в Едином
+          государственном реестре недвижимости сделана запись регистрации от
+          {{ model.regDocDate15 | formatDate | str_corrector }} №{{
+            model.regDocNumber15 | str_corrector
+          }}.
+        </p>
+      </div>
+
+
+
+
+
+
+
       <div>
         <p>
           <b>2.</b> Стоимость недвижимого имущества составляет
@@ -900,6 +957,7 @@ export default {
     select_second_step: String,
     select_third_step: String,
     plain: Function,
+    add: Boolean
   },
   methods: {
     printpdf() {

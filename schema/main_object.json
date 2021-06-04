@@ -35,11 +35,7 @@
           "type": "Button",
           "label": "Заполнить данные из Росреестра",
           "mask": "",
-          "visible": {
-            "dep_name": "propertyUniqueIdentifier",
-            "dep_type": "Input",
-            "dep_check": ""
-          }
+          "visible": false
         },
         {
           "type": "Number",

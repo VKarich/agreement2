@@ -50,6 +50,7 @@
         :field="field"
         :i="i"
         :fields="schema_test"
+        :changeAdd="changeAdd"
         @input="updateField()"
       >
       </component>
@@ -97,6 +98,7 @@ import GeneratedField from "@/formElements/GeneratedField.vue";
 import GeneratedFieldFL from "@/formElements/GeneratedFieldFL.vue";
 import Button from "@/formElements/Button.vue";
 import Button_add from "@/formElements/Button_add.vue";
+import Button_remove from "@/formElements/Button_remove.vue";
 import AwesomeMask from "awesome-mask";
 
 const rubles = require("rubles").rubles;
@@ -117,7 +119,8 @@ export default {
     GeneratedField,
     GeneratedFieldFL,
     Button,
-    Button_add
+    Button_add,
+    Button_remove
   },
   props: [
     "config",
@@ -125,7 +128,8 @@ export default {
     "select_third_step",
     "schema_test",
     "model",
-    "sendData"
+    "sendData",
+    "changeAdd"
   ],
   data() {
     return {
@@ -137,6 +141,7 @@ export default {
       dis: false,
       lastStep: false,
       counter: false,
+      checked: false
     };
   },
   methods: {

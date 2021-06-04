@@ -11,6 +11,7 @@
           :select_second_step="select_second_step"
           :select_third_step="select_third_step"
           :sendData="sendData"
+          :changeAdd="changeAdd"
         ></form-builder>
       </div>
       <div id="right_menu">
@@ -18,6 +19,7 @@
           :model="model"
           :select_second_step="select_second_step"
           :select_third_step="select_third_step"
+          :add="add"
         />
       </div>
     </div>
@@ -127,6 +129,7 @@ export default {
       isSwitched: false,
       isSwitchedCustom: "Нет",
       model: model_out,
+      add: false,
       fl_fl: mainInfo
         .concat(flSeller_1)
         .concat(flSeller_2)
@@ -159,6 +162,9 @@ export default {
     };
   },
   methods: {
+    changeAdd() {
+      this.add = !this.add
+    },
     sendData() {
       // for (let n in this.model) {
       //   if (this.model[n] !== null && JSON.stringify(this.model[n]).match("00:00:00")) {
