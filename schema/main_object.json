@@ -4,41 +4,39 @@
       "legend": "Данные объекта сделки",
       "fields": [
         {
-          "type": "Select",
+          "type": "Select_prop",
           "label": "Наименование объекта:",
           "icon": "home-city-outline",
           "values": [
             { "name": "Квартира" },
             { "name": "Земельный участок" },
-            { "name": "Жилой дом" }
+            { "name": "Жилой дом" },
+            { "name": "Нежилое здание" },
+            { "name": "Нежилое помещение" }
           ],
           "model": "propertyName",
           "mask": "",
           "placeholder": "Выберите наименование объекта",
           "id": "property_name",
+          "def_key": 0,
           "required": true
         },
         {
-          "type": "Input",
+          "type": "Input_prop",
           "inputType": "text",
           "label": "Кадастровый номер:",
           "icon": "counter",
-          "placeholder": "00:00:0000000:000",
-          "maxlength": 17,
+          "placeholder": "00:00:0000000:0000",
+          "maxlength": 19,
           "model": "propertyUniqueIdentifier",
           "mask": "",
           "id": "property_unique_identidier",
           "hint": "Укажите кадастровый номер объекта (как в документе, включая дополнительные символы)",
+          "def_key": 0,
           "required": true
         },
         {
-          "type": "Button",
-          "label": "Заполнить данные из Росреестра",
-          "mask": "",
-          "visible": false
-        },
-        {
-          "type": "Number",
+          "type": "Number_prop",
           "inputType": "number",
           "icon": "texture-box",
           "label": "Общая площадь (м2):",
@@ -46,12 +44,13 @@
           "mask": "",
           "id": "property_floor_area",
           "placeholder": "Общая площадь(в кв.м.)",
+          "def_key": 0,
           "hint":
             "Укажите общую площадь Объекта недвижимости (в квадратных метрах)",
           "required": true
         },
         {
-          "type": "Number",
+          "type": "Number_prop",
           "inputType": "number",
           "label": "Количество комнат:",
           "icon": "counter",
@@ -61,14 +60,15 @@
           "id": "property_num_room",
           "hint": "Укажите количество комнат",
           "required": true,
+          "def_key": 0,
           "visible": {
             "dep_name": "propertyName",
-            "dep_type": "Select",
+            "dep_type": "Select_2",
             "dep_check": ["Квартира", "Жилой дом"]
           }
         },
         {
-          "type": "Number",
+          "type": "Number_prop",
           "inputType": "number",
           "label": "Этаж:",
           "icon": "floor-plan",
@@ -77,14 +77,15 @@
           "placeholder": "Этаж",
           "id": "property_level",
           "required": true,
+          "def_key": 0,
           "visible": {
             "dep_name": "propertyName",
-            "dep_type": "Select",
-            "dep_check": "Квартира"
+            "dep_type": "Select_2",
+            "dep_check": ["Квартира", "Нежилое помещение"]
           }
         },
         {
-          "type": "Number",
+          "type": "Number_prop",
           "inputType": "number",
           "label": "Количество этажей:",
           "icon": "counter",
@@ -92,15 +93,16 @@
           "mask": "",
           "placeholder": "Этаж",
           "id": "property_level",
+          "def_key": 0,
           "required": true,
           "visible": {
             "dep_name": "propertyName",
-            "dep_type": "Select",
-            "dep_check": "Жилой дом"
+            "dep_type": "Select_2",
+            "dep_check": ["Жилой дом", "Нежилое здание"]
           }
         },
         {
-          "type": "Select",
+          "type": "Select_prop",
           "label": "Категория земель:",
           "icon": "image-filter-hdr",
           "values": [
@@ -125,14 +127,15 @@
           "id": "property_land_cat",
           "required": true,
           "placeholder": "Выберите вариант",
+          "def_key": 0,
           "visible": {
             "dep_name": "propertyName",
-            "dep_type": "Select",
+            "dep_type": "Select_2",
             "dep_check": "Земельный участок"
           }
         },
         {
-          "type": "Input",
+          "type": "Input_prop",
           "inputType": "text",
           "label": "Разрешенное использование:",
           "icon": "text-box-multiple-outline",
@@ -142,26 +145,28 @@
           "id": "property_land_used",
           "hint": "Укажите как в документах",
           "required": true,
+          "def_key": 0,
           "visible": {
             "dep_name": "propertyName",
-            "dep_type": "Select",
+            "dep_type": "Select_2",
             "dep_check": "Земельный участок"
           }
         },
         {
-          "type": "Input",
+          "type": "Input_prop",
           "inputType": "text",
           "label": "Адрес объекта:",
           "model": "propertyAddress",
           "icon": "city",
           "mask": "",
+          "def_key": 0,
           "id": "property_address",
           "placeholder": "Адрес объекта",
           "hint": "Укажите точный адрес Объекта",
           "required": true
         },
         {
-          "type": "Input",
+          "type": "Input_prop",
           "inputType": "text",
           "label": "Объект принадлежит продавцу на основании:",
           "icon": "file-document-edit",
@@ -170,35 +175,38 @@
           "model": "propertyDoc",
           "mask": "",
           "id": "property_doc",
+          "def_key": 0,
           "hint":
             "Указывается документ-основание регистрации права собственности продавца. Найти его можно в Выписке из ЕГРН или Свидетельстве о праве собственности",
           "required": true
         },
         {
-          "type": "Input",
+          "type": "Input_prop",
           "inputType": "text",
           "label": "Номер записи о регистрации права в ЕГРН:",
-          "model": "regDocNumber",
+          "model": "propertyRegDocNumber",
           "icon": "text-box-multiple-outline",
           "mask": "",
           "placeholder": "Укажите номер записи из ЕГРН",
           "id": "reg_doc_number",
+          "def_key": 0,
           "required": true
         },
         {
-          "type": "Datepicker",
+          "type": "Datepicker_prop",
           "inputType": "date",
           "label": "Дата записи о регистрации права в ЕГРН:",
           "placeholder": "Укажите дату записи из ЕГРН",
-          "model": "regDocDate",
+          "model": "propertyRegDocDate",
           "icon": "calendar-today",
           "mask": "",
           "format": "YYYY-MM-DD",
+          "def_key": 0,
           "id": "reg_doc_date",
           "required": true
         },
         {
-          "type": "Input",
+          "type": "Input_prop",
           "inputType": "text",
           "label": "Область регистрации перехода права:",
           "model": "propertyRegObl",
@@ -206,6 +214,7 @@
           "placeholder": "Введите название области",
           "id": "property_reg_obl",
           "icon": "calendar-today",
+          "def_key": 0,
           "hint":
             "Укажите название области, где происходит регистрация перехода прав на данное имущество (в родительном падеже). Например: Калужской области",
           "visible": false
