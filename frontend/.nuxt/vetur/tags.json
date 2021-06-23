@@ -1,0 +1,20 @@
+{
+  "Footer": {
+    "description": "Auto imported from components/Footer.vue"
+  },
+  "Generform": {
+    "description": "Auto imported from components/Generform.vue"
+  },
+  "Header": {
+    "description": "Auto imported from components/Header.vue"
+  },
+  "Logo": {
+    "description": "Auto imported from components/Logo.vue"
+  },
+  "Nav": {
+    "description": "Auto imported from components/Nav.vue"
+  },
+  "FormBuilder": {
+    "description": "Auto imported from components/formBuilder.vue"
+  }
+}
