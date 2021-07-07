@@ -33,10 +33,10 @@
 </template>
 
 <script>
-import model from "@/@/model.json";
-import dogovor from "@/@/dogovor_arendy.json";
-import Sides from '@/components/Sides.vue'
-import Requisites from '@/components/Requisites.vue'
+import model from "../../model.json";
+import dogovor from "/../dogovor_arendy.json";
+import Sides from '../components/Sides.vue'
+import Requisites from '../components/Requisites.vue'
 
 const numeralize = require('numeralize-ru');
 const rubles = require("rubles").rubles;
