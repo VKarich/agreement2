@@ -33,8 +33,8 @@
 </template>
 
 <script>
-import model from "@/../model.json";
-import dogovor from "@/../dogovor_arendy.json";
+import model from "../../model.json";
+import dogovor from "/../dogovor_arendy.json";
 import Sides from '../components/Sides.vue'
 import Requisites from '../components/Requisites.vue'
 
