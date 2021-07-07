@@ -36,7 +36,7 @@ export default {
   methods: {
     test() {
       let len = this.fields[this.i].fields.length;
-      let len2 = (this.fields[this.i].fields.length - 14);
+      let len2 = (this.fields[this.i].fields.length - 18);
 
       for (let n in this.model) {
         if (n.includes('property') && this.model[n].length > 1) {
@@ -53,7 +53,7 @@ export default {
           }
       }
       for (let y = 0; y <= (len-1); y++) {
-        this.fields[this.i].fields.splice((len-14), 14);
+        this.fields[this.i].fields.splice((len-18), 18);
       }
       this.changeRemove()
     },

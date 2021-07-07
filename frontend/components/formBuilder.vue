@@ -11,6 +11,7 @@
         {{ Math.round(i * 16.6) + "%" }}
       </b-progress>
     </section>
+    <input v-model="i"/>
     <p class="pos" v-text="schema_test[i].legend"></p>
     <section
       class="sec"
@@ -95,6 +96,7 @@ import Number from "@/formElements/Number.vue";
 import Number_prop from "@/formElements/Number_prop.vue";
 import Datepicker from "@/formElements/Datepicker.vue";
 import Datepicker_prop from "@/formElements/Datepicker_prop.vue";
+import Datepicker_prop_range from "@/formElements/Datepicker_prop_range.vue";
 import Select from "@/formElements/Select.vue";
 import Select_prop from "@/formElements/Select_prop.vue";
 import MultiSelect from "@/formElements/MultiSelect.vue";
@@ -128,7 +130,8 @@ export default {
     Select_prop,
     Input_prop,
     Number_prop,
-    Datepicker_prop
+    Datepicker_prop,
+    Datepicker_prop_range
   },
   props: [
     "config",
@@ -199,6 +202,25 @@ export default {
           &&
           field.visible.dep_type == "Select_2" 
           && JSON.stringify(field.visible.dep_check).match(JSON.stringify(this.model.propertyName[field.def_key]))
+        ) {
+          return true;
+        }
+        if (
+          this.model.propertyName[field.def_key]
+          &&
+          field.visible.dep_type == "Multi" 
+          && JSON.stringify(field.visible.dep_check).match(JSON.stringify(this.model.propertyName[field.def_key]))
+          && JSON.stringify(field.visible.dep_dogovor).match(JSON.stringify(this.select_first_step)) 
+        ) {
+          return true;
+        }
+        
+        if (
+          this.model[field.visible.dep_name]
+          &&
+          field.visible.dep_type == "Multi_payment"
+          && JSON.stringify(field.visible.dep_check).match(JSON.stringify(this.model[field.visible.dep_name]))
+          && JSON.stringify(field.visible.dep_dogovor).match(JSON.stringify(this.select_first_step)) 
         ) {
           return true;
         }

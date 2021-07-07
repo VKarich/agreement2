@@ -46,7 +46,7 @@ export default {
             this.fields[this.i].fields[c][x] = "Button_remove"
           }
       }
-      for (let y = 0; y <= 13; y++) {
+      for (let y = 0; y <= 17; y++) {
         this.elem[y].id = this.fields[this.i].fields[y].id + (this.quantityOfProperty + 1);
         this.elem[y].def_key = this.quantityOfProperty + 1;
 

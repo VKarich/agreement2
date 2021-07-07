@@ -32,6 +32,7 @@
           :select_third_step="select_third_step"
           :add="add"
           :quantityOfProperty="quantityOfProperty"
+          :schema="schema_test"
         />
       </div>
     </div>
@@ -40,6 +41,7 @@
 
 <script>
 /* eslint-disable */
+import modelFull from "../../model_full.json"
 import dogovorArendy from "@/agreements/dogovor_arendy";
 import dkp from "@/agreements/dogovor_kupli_prodazhi";
 import model_out from "../../model.json";
@@ -233,15 +235,17 @@ export default {
   beforeUpdate() {
     if (this.select_second_step == "ФЛ" && this.select_third_step == "ФЛ") {
       this.schema_test = this.fl_fl;
+      this.model.sides = this.select_second_step + this.select_third_step;
     }
     if (this.select_second_step == "ФЛ" && this.select_third_step == "ЮЛ") {
       this.schema_test = this.fl_ul;
+      this.model.sides = this.select_second_step + this.select_third_step;
     }
     if (this.select_second_step == "ЮЛ" && this.select_third_step == "ФЛ") {
-      this.schema_test = this.ul_fl;
+      this.model.sides = this.select_second_step + this.select_third_step;
     }
     if (this.select_second_step == "ЮЛ" && this.select_third_step == "ЮЛ") {
-      this.schema_test = this.ul_ul;
+      this.model.sides = this.select_second_step + this.select_third_step;
     }
     // if (JSON.stringify(this.select_first_step).match('аренды')) {
     //   this.schema_test = JSON.parse(JSON.stringify(this.schema_test).replaceAll('продавца', 'арендодателя').replaceAll("Продавца", "Aрендодателя").replaceAll("Покупателя", "Арендатора").replaceAll("покупателя", "арендатора"))
@@ -284,6 +288,15 @@ export default {
           );
           for (let n in x) {
             this.model[x[n]] = null;
+          }
+        }
+        if (newValue.number == '301167') {
+          this.model = JSON.parse(JSON.stringify(modelFull))
+          this.model.propertyRegDocDate = [new Date()]
+          for (let i in modelFull) {
+            if (modelFull[i] == null) {
+              this.model[i] = new Date()
+            }
           }
         }
       },

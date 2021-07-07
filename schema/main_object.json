@@ -208,16 +208,98 @@
         {
           "type": "Input_prop",
           "inputType": "text",
-          "label": "Область регистрации перехода права:",
-          "model": "propertyRegObl",
+          "label": "Целевое назначение помещения:",
+          "model": "propertySpecPurpose",
           "mask": "",
-          "placeholder": "Введите название области",
-          "id": "property_reg_obl",
-          "icon": "calendar-today",
+          "placeholder": "Целевое назначение помещения",
+          "id": "property_spec_purpose",
+          "icon": "target",
           "def_key": 0,
           "hint":
-            "Укажите название области, где происходит регистрация перехода прав на данное имущество (в родительном падеже). Например: Калужской области",
-          "visible": false
+            "Целевое назначение помещения (производство, офис, торговая точка и тд.) в родительном падеже",
+            "visible": {
+              "dep_name": "propertyName",
+              "dep_dogovor": "Договор аренды",
+              "dep_type": "Multi",
+              "dep_check": ["Нежилое здание", "Нежилое помещение"]
+            }
+        },
+        {
+          "type": "Number_prop",
+          "inputType": "number",
+          "label": "Срок аренды (в месяцах):",
+          "placeholder": "Укажите срок аренды",
+          "model": "propertyRentMonths",
+          "icon": "calendar-today",
+          "mask": "",
+          "def_key": 0,
+          "id": "prop_rent_months",
+          "required": true,
+          "visible": {
+            "dep_name": "propertyName",
+            "dep_dogovor": "Договор аренды",
+            "dep_type": "Multi",
+            "dep_check": ["Нежилое здание", "Нежилое помещение", "Квартира", "Земельный участок", "Жилой дом"]
+          }
+        },
+        {
+          "type": "Datepicker_prop",
+          "inputType": "date",
+          "label": "Дата начала аренды:",
+          "placeholder": "Укажите дату начала аренды",
+          "model": "propertyRentFirstMonths",
+          "icon": "calendar-today",
+          "mask": "",
+          "def_key": 0,
+          "format": "YYYY-MM-DD",
+          "id": "prop_rent_first_months",
+          "required": true,
+          "visible": {
+            "dep_name": "propertyName",
+            "dep_dogovor": "Договор аренды",
+            "dep_type": "Multi",
+            "dep_check": ["Нежилое здание", "Нежилое помещение", "Квартира", "Земельный участок", "Жилой дом"]
+          }
+        },
+        {
+          "type": "Datepicker_prop",
+          "inputType": "date",
+          "label": "Дата окончания аренды:",
+          "placeholder": "Укажите дату окончания аренды",
+          "model": "propertyRentLastMonths",
+          "icon": "calendar-today",
+          "mask": "",
+          "def_key": 0,
+          "format": "YYYY-MM-DD",
+          "id": "prop_rent_last_months",
+          "required": true,
+          "visible": {
+            "dep_name": "propertyName",
+            "dep_dogovor": "Договор аренды",
+            "dep_type": "Multi",
+            "dep_check": ["Нежилое здание", "Нежилое помещение", "Квартира", "Земельный участок", "Жилой дом"]
+          }
+        },
+        {
+          "type": "Select_prop",
+          "label": "Автоматическая пролонгация договора:",
+          "icon": "home-city-outline",
+          "values": [
+            { "name": "Да" },
+            { "name": "Нет" }
+          ],
+          "model": "contractExtention",
+          "mask": "",
+          "placeholder": "Выберите наименование объекта",
+          "id": "contact_extention",
+          "def_key": 0,
+          "required": true,
+          "visible": {
+            "dep_name": "propertyName",
+            "dep_dogovor": "Договор аренды",
+            "dep_type": "Multi",
+            "dep_check": ["Нежилое здание", "Нежилое помещение", "Квартира", "Земельный участок", "Жилой дом"]
+          }
         },
         {
           "type": "Button_add",

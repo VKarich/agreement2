@@ -16,6 +16,587 @@
           "required": true
         },
         {
+          "type": "Select",
+          "model": "nds",
+          "icon": "cash-multiple",
+          "label": "НДС:",
+          "selectOptions": { "hideNoneSelectedText": true },
+          "values": [
+            { "name": "Без учета НДС" },
+            { "name": "С учетом НДС" }
+          ],
+          "mask": "",
+          "id": "nds",
+          "required": true,
+          "placeholder": "Выберите вариант",
+          "visible": {
+            "dep_name": "sides",
+            "dep_dogovor": "Договор аренды",
+            "dep_type": "Multi_payment",
+            "dep_check": ["ЮЛЮЛ"]
+          }
+        },
+        {
+          "type": "Select",
+          "model": "paymentDueDate",
+          "icon": "cash-multiple",
+          "label": "Первичный платеж по договору:",
+          "selectOptions": { "hideNoneSelectedText": true },
+          "values": [
+            { "name": "не позднее трех календарных дней" },
+            { "name": "при подписании настоящего Договора" }
+          ],
+          "mask": "",
+          "id": "paymentDueDate",
+          "required": true,
+          "placeholder": "Выберите вариант",
+          "visible": {
+            "dep_name": "sides",
+            "dep_dogovor": "Договор аренды",
+            "dep_type": "Multi_payment",
+            "dep_check": ["ЮЛЮЛ", "ЮЛФЛ", "ФЛФЛ", "ФЛЮЛ"]
+          }
+        },
+        {
+          "type": "Number",
+          "inputType": "number",
+          "icon": "cash-multiple",
+          "min": 0,
+          "max": 31,
+          "label": "Ежемесячный платеж не позднее (день):",
+          "model": "costTermDate",
+          "mask": "99",
+          "placeholder": "Оплата производится до",
+          "id": "costTermDate",
+          "required": true,
+          "visible": {
+            "dep_name": "sides",
+            "dep_dogovor": "Договор аренды",
+            "dep_type": "Multi_payment",
+            "dep_check": ["ЮЛЮЛ", "ЮЛФЛ", "ФЛФЛ", "ФЛЮЛ"]
+          }
+        },
+        {
+          "type": "Number",
+          "inputType": "number",
+          "icon": "cash-multiple",
+          "min": 0,
+          "max": 100,
+          "label": "Пени за просрочку (%):",
+          "model": "fine",
+          "mask": "",
+          "placeholder": "Пени в %",
+          "id": "fine",
+          "required": true,
+          "visible": {
+            "dep_name": "sides",
+            "dep_dogovor": "Договор аренды",
+            "dep_type": "Multi_payment",
+            "dep_check": ["ЮЛЮЛ", "ЮЛФЛ", "ФЛФЛ", "ФЛЮЛ"]
+          }
+        },
+        {
+          "type": "Select",
+          "model": "publicServices",
+          "icon": "cash-multiple",
+          "label": "Добавить пункт «Коммунальные услуги»:",
+          "selectOptions": { "hideNoneSelectedText": true },
+          "values": [
+            { "name": "Да" },
+            { "name": "Нет" }
+          ],
+          "mask": "",
+          "id": "publicServices",
+          "required": true,
+          "placeholder": "Выберите вариант",
+          "visible": {
+            "dep_name": "sides",
+            "dep_dogovor": "Договор аренды",
+            "dep_type": "Multi_payment",
+            "dep_check": ["ЮЛЮЛ", "ЮЛФЛ", "ФЛФЛ", "ФЛЮЛ"]
+          }
+        },
+        {
+          "type": "Input",
+          "inputType": "text",
+          "icon": "cash-multiple",
+          "label": "Перечень возмещаемых платежей:",
+          "model": "contributions",
+          "mask": "",
+          "placeholder": "Какие платежи оплачивает Арендатор?",
+          "id": "contributions",
+          "required": true,
+          "visible": {
+            "dep_name": "publicServices",
+            "dep_dogovor": "Договор аренды",
+            "dep_type": "Multi_payment",
+            "dep_check": ["Да"]
+          }
+        },
+        {
+          "type": "Number",
+          "inputType": "number",
+          "icon": "cash-multiple",
+          "min": 0,
+          "max": 31,
+          "label": "Коммунальный платеж не позднее (день):",
+          "model": "publicServicesPayDate",
+          "mask": "99",
+          "placeholder": "Оплата производится до",
+          "id": "publicServicesPayDate",
+          "required": true,
+          "visible": {
+            "dep_name": "publicServices",
+            "dep_dogovor": "Договор аренды",
+            "dep_type": "Multi_payment",
+            "dep_check": ["Да"]
+          }
+        },
+        {
+          "type": "Select",
+          "model": "construction",
+          "icon": "cash-multiple",
+          "label": "Ремонтные работы:",
+          "selectOptions": { "hideNoneSelectedText": true },
+          "values": [
+            { "name": "отсутствует" },
+            { "name": "за свой счет" },
+            { "name": "за счет Арендодателя" }
+          ],
+          "mask": "",
+          "id": "construction",
+          "required": true,
+          "placeholder": "Выберите вариант",
+          "visible": {
+            "dep_name": "sides",
+            "dep_dogovor": "Договор аренды",
+            "dep_type": "Multi_payment",
+            "dep_check": ["ЮЛЮЛ", "ЮЛФЛ", "ФЛФЛ", "ФЛЮЛ"]
+          }
+        },
+        {
+          "type": "Select",
+          "model": "waste",
+          "icon": "cash-multiple",
+          "label": "Предоставлять Арендодателю необходимые сведения о количестве и составе отходов:",
+          "selectOptions": { "hideNoneSelectedText": true },
+          "values": [
+            { "name": "Да" },
+            { "name": "Нет" }
+          ],
+          "mask": "",
+          "id": "waste",
+          "required": true,
+          "placeholder": "Выберите вариант",
+          "visible": {
+            "dep_name": "sides",
+            "dep_dogovor": "Договор аренды",
+            "dep_type": "Multi_payment",
+            "dep_check": ["ЮЛЮЛ", "ЮЛФЛ", "ФЛФЛ", "ФЛЮЛ"]
+          }
+        },
+        {
+          "type": "Number",
+          "inputType": "number",
+          "icon": "cash-multiple",
+          "min": 0,
+          "max": 31,
+          "label": "Возмещение ущерба не позднее (день):",
+          "model": "indemnification",
+          "mask": "99",
+          "placeholder": "Оплата производится до",
+          "id": "indemnification",
+          "required": true,
+          "visible": {
+            "dep_name": "sides",
+            "dep_dogovor": "Договор аренды",
+            "dep_type": "Multi_payment",
+            "dep_check": ["ЮЛЮЛ", "ЮЛФЛ", "ФЛФЛ", "ФЛЮЛ"]
+          }
+        },
+        {
+          "type": "Select",
+          "model": "sublease",
+          "icon": "cash-multiple",
+          "label": "Возможность субаренды:",
+          "selectOptions": { "hideNoneSelectedText": true },
+          "values": [
+            { "name": "Да" },
+            { "name": "Нет" }
+          ],
+          "mask": "",
+          "id": "sublease",
+          "required": true,
+          "placeholder": "Выберите вариант",
+          "visible": {
+            "dep_name": "sides",
+            "dep_dogovor": "Договор аренды",
+            "dep_type": "Multi_payment",
+            "dep_check": ["ЮЛЮЛ", "ЮЛФЛ", "ФЛФЛ", "ФЛЮЛ"]
+          }
+        },
+        {
+          "type": "Select",
+          "model": "catch_property",
+          "icon": "cash-multiple",
+          "label": "Удержание имущества:",
+          "selectOptions": { "hideNoneSelectedText": true },
+          "values": [
+            { "name": "Да" },
+            { "name": "Нет" }
+          ],
+          "mask": "",
+          "id": "catch_property",
+          "required": true,
+          "placeholder": "Выберите вариант",
+          "visible": {
+            "dep_name": "sides",
+            "dep_dogovor": "Договор аренды",
+            "dep_type": "Multi_payment",
+            "dep_check": ["ЮЛЮЛ", "ЮЛФЛ", "ФЛФЛ", "ФЛЮЛ"]
+          }
+        },
+        {
+          "type": "Select",
+          "model": "repairs",
+          "icon": "cash-multiple",
+          "label": "Капитальный ремонт за счет Арендодателя:",
+          "selectOptions": { "hideNoneSelectedText": true },
+          "values": [
+            { "name": "Да" },
+            { "name": "Нет" }
+          ],
+          "mask": "",
+          "id": "repairs",
+          "required": true,
+          "placeholder": "Выберите вариант",
+          "visible": {
+            "dep_name": "sides",
+            "dep_dogovor": "Договор аренды",
+            "dep_type": "Multi_payment",
+            "dep_check": ["ЮЛЮЛ", "ЮЛФЛ", "ФЛФЛ", "ФЛЮЛ"]
+          }
+        },
+        {
+          "type": "Number",
+          "inputType": "number",
+          "icon": "cash-multiple",
+          "min": 0,
+          "max": 31,
+          "label": "Приемка объекта Арендодателем не позднее (день):",
+          "model": "transferAcceptanceCertificateDate",
+          "mask": "99",
+          "placeholder": "",
+          "id": "transferAcceptanceCertificateDate",
+          "required": true,
+          "visible": {
+            "dep_name": "sides",
+            "dep_dogovor": "Договор аренды",
+            "dep_type": "Multi_payment",
+            "dep_check": ["ЮЛЮЛ", "ЮЛФЛ", "ФЛФЛ", "ФЛЮЛ"]
+          }
+        },
+        {
+          "type": "Select",
+          "model": "compensation",
+          "icon": "cash-multiple",
+          "label": "Возмещение улучшений за счет Арендодателя:",
+          "selectOptions": { "hideNoneSelectedText": true },
+          "values": [
+            { "name": "Да" },
+            { "name": "Нет" }
+          ],
+          "mask": "",
+          "id": "compensation",
+          "required": true,
+          "placeholder": "Выберите вариант",
+          "visible": {
+            "dep_name": "sides",
+            "dep_dogovor": "Договор аренды",
+            "dep_type": "Multi_payment",
+            "dep_check": ["ЮЛЮЛ", "ЮЛФЛ", "ФЛФЛ", "ФЛЮЛ"]
+          }
+        },
+        {
+          "type": "Select",
+          "model": "misuse",
+          "icon": "cash-multiple",
+          "label": "Ответственность при нецелевом использовании помещения:",
+          "selectOptions": { "hideNoneSelectedText": true },
+          "values": [
+            { "name": "Да" },
+            { "name": "Нет" }
+          ],
+          "mask": "",
+          "id": "misuse",
+          "required": true,
+          "placeholder": "Выберите вариант",
+          "visible": {
+            "dep_name": "sides",
+            "dep_dogovor": "Договор аренды",
+            "dep_type": "Multi_payment",
+            "dep_check": ["ЮЛЮЛ", "ЮЛФЛ", "ФЛФЛ", "ФЛЮЛ"]
+          }
+        },
+        {
+          "type": "Input",
+          "inputType": "text",
+          "icon": "cash-multiple",
+          "label": "Срок устранения нарушений:",
+          "model": "misuse_days",
+          "mask": "",
+          "placeholder": "Оплата производится до",
+          "id": "misuse_days",
+          "required": true,
+          "visible": {
+            "dep_name": "misuse",
+            "dep_dogovor": "Договор аренды",
+            "dep_type": "Multi_payment",
+            "dep_check": ["Да"]
+          }
+        },
+        {
+          "type": "Input",
+          "inputType": "text",
+          "icon": "cash-multiple",
+          "label": "Просрочка устранения нарушений не более:",
+          "model": "delay",
+          "mask": "",
+          "placeholder": "",
+          "id": "delay",
+          "required": true,
+          "visible": {
+            "dep_name": "misuse",
+            "dep_dogovor": "Договор аренды",
+            "dep_type": "Multi_payment",
+            "dep_check": ["Да"]
+          }
+        },
+        {
+          "type": "Input",
+          "inputType": "text",
+          "icon": "cash-multiple",
+          "label": "Освободить имущество не позднее:",
+          "model": "time_to_escape",
+          "mask": "",
+          "placeholder": "",
+          "id": "time_to_escape",
+          "required": true,
+          "visible": {
+            "dep_name": "misuse",
+            "dep_dogovor": "Договор аренды",
+            "dep_type": "Multi_payment",
+            "dep_check": ["Да"]
+          }
+        },
+        {
+          "type": "Select",
+          "model": "liability",
+          "icon": "cash-multiple",
+          "label": "Ответственность Арендодателя за перебои в работе инжиниринговых систем:",
+          "selectOptions": { "hideNoneSelectedText": true },
+          "values": [
+            { "name": "Да" },
+            { "name": "Нет" }
+          ],
+          "mask": "",
+          "id": "liability",
+          "required": true,
+          "placeholder": "Выберите вариант",
+          "visible": {
+            "dep_name": "sides",
+            "dep_dogovor": "Договор аренды",
+            "dep_type": "Multi_payment",
+            "dep_check": ["ЮЛЮЛ", "ЮЛФЛ", "ФЛФЛ", "ФЛЮЛ"]
+          }
+        },
+        {
+          "type": "Select",
+          "model": "arg_change",
+          "icon": "cash-multiple",
+          "label": "ПОРЯДОК ИЗМЕНЕНИЯ ДОГОВОРА В ЧАСТИ УСЛОВИЯ О РАЗМЕРЕ АРЕНДНОЙ ПЛАТЫ ПО СОГЛАШЕНИЮ СТОРОН:",
+          "selectOptions": { "hideNoneSelectedText": true },
+          "values": [
+            { "name": "Добавить" },
+            { "name": "Убрать" }
+          ],
+          "mask": "",
+          "id": "arg_change",
+          "required": true,
+          "placeholder": "Выберите вариант",
+          "visible": {
+            "dep_name": "sides",
+            "dep_dogovor": "Договор аренды",
+            "dep_type": "Multi_payment",
+            "dep_check": ["ЮЛЮЛ", "ЮЛФЛ", "ФЛФЛ", "ФЛЮЛ"]
+          }
+        },
+        {
+          "type": "Select",
+          "model": "arg_change2",
+          "icon": "cash-multiple",
+          "label": "ПРЕИМУЩЕСТВЕННОЕ ПРАВО НА ЗАКЛЮЧЕНИЕ ДОГОВОРА НА НОВЫЙ СРОК. ВОЗОБНОВЛЕНИЕ ДОГОВОРА:",
+          "selectOptions": { "hideNoneSelectedText": true },
+          "values": [
+            { "name": "Добавить" },
+            { "name": "Убрать" }
+          ],
+          "mask": "",
+          "id": "arg_change2",
+          "required": true,
+          "placeholder": "Выберите вариант",
+          "visible": {
+            "dep_name": "sides",
+            "dep_dogovor": "Договор аренды",
+            "dep_type": "Multi_payment",
+            "dep_check": ["ЮЛЮЛ", "ЮЛФЛ", "ФЛФЛ", "ФЛЮЛ"]
+          }
+        },
+        {
+          "type": "Input",
+          "inputType": "text",
+          "icon": "cash-multiple",
+          "label": "Односторонний отказ от соблюдения договора при предупреждении Арендодателя не позднее чем:",
+          "model": "warningDays",
+          "mask": "",
+          "placeholder": "",
+          "id": "warningDays",
+          "required": true,
+          "visible": {
+            "dep_name": "sides",
+            "dep_dogovor": "Договор аренды",
+            "dep_type": "Multi_payment",
+            "dep_check": ["ЮЛЮЛ", "ЮЛФЛ", "ФЛФЛ", "ФЛЮЛ"]
+          }
+        },
+        {
+          "type": "Input",
+          "inputType": "text",
+          "icon": "cash-multiple",
+          "label": "Односторонний отказ от соблюдения договора при предупреждении Арендодателя не позднее чем:",
+          "model": "warningDays_2",
+          "mask": "",
+          "placeholder": "",
+          "id": "warningDays_2",
+          "required": true,
+          "visible": {
+            "dep_name": "sides",
+            "dep_dogovor": "Договор аренды",
+            "dep_type": "Multi_payment",
+            "dep_check": ["ЮЛЮЛ", "ЮЛФЛ", "ФЛФЛ", "ФЛЮЛ"]
+          }
+        },
+        {
+          "type": "Select",
+          "model": "arg_change3",
+          "icon": "cash-multiple",
+          "label": "ПЕРЕМЕНА ЛИЦ В ДОГОВОРЕ И В ОБЯЗАТЕЛЬСТВАХ ИЗ ДОГОВОРА:",
+          "selectOptions": { "hideNoneSelectedText": true },
+          "values": [
+            { "name": "Добавить" },
+            { "name": "Убрать" }
+          ],
+          "mask": "",
+          "id": "arg_change3",
+          "required": true,
+          "placeholder": "Выберите вариант",
+          "visible": {
+            "dep_name": "sides",
+            "dep_dogovor": "Договор аренды",
+            "dep_type": "Multi_payment",
+            "dep_check": ["ЮЛЮЛ", "ЮЛФЛ", "ФЛФЛ", "ФЛЮЛ"]
+          }
+        },
+        {
+          "type": "Select",
+          "model": "confidentiality",
+          "icon": "cash-multiple",
+          "label": "КОНФИДЕНЦИАЛЬНОСТЬ:",
+          "selectOptions": { "hideNoneSelectedText": true },
+          "values": [
+            { "name": "Добавить" },
+            { "name": "Убрать" }
+          ],
+          "mask": "",
+          "id": "confidentiality",
+          "required": true,
+          "placeholder": "Выберите вариант",
+          "visible": {
+            "dep_name": "sides",
+            "dep_dogovor": "Договор аренды",
+            "dep_type": "Multi_payment",
+            "dep_check": ["ЮЛЮЛ", "ЮЛФЛ", "ФЛФЛ", "ФЛЮЛ"]
+          }
+        },
+        {
+          "type": "Input",
+          "inputType": "text",
+          "icon": "cash-multiple",
+          "label": "Уполномоченным представителем Арендодателя является:",
+          "model": "landlordAgentName",
+          "mask": "",
+          "placeholder": "Введите ФИО представителя",
+          "id": "landlordAgentName",
+          "required": true,
+          "visible": {
+            "dep_name": "sides",
+            "dep_dogovor": "Договор аренды",
+            "dep_type": "Multi_payment",
+            "dep_check": ["ЮЛЮЛ", "ЮЛФЛ", "ФЛФЛ", "ФЛЮЛ"]
+          }
+        },
+        {
+          "type": "Input",
+          "inputType": "text",
+          "label": "Телефон представителя Арендодателя:",
+          "model": "landlordPhoneNumber",
+          "icon": "phone-in-talk",
+          "mask": "+9(999)999-99-99",
+          "placeholder": "Укажите номер представителя Арендодателя",
+          "required": true,
+          "hint": "Городские номера указываются с кодом города. Например: +8(846)***-**-**",
+          "visible": {
+            "dep_name": "sides",
+            "dep_dogovor": "Договор аренды",
+            "dep_type": "Multi_payment",
+            "dep_check": ["ЮЛЮЛ", "ЮЛФЛ", "ФЛФЛ", "ФЛЮЛ"]
+          }
+        },
+        {
+          "type": "Input",
+          "inputType": "text",
+          "icon": "cash-multiple",
+          "label": "Уполномоченным представителем Арендатора является:",
+          "model": "tenantAgentName",
+          "mask": "",
+          "placeholder": "Введите ФИО представителя",
+          "id": "tenantAgentName",
+          "required": true,
+          "visible": {
+            "dep_name": "sides",
+            "dep_dogovor": "Договор аренды",
+            "dep_type": "Multi_payment",
+            "dep_check": ["ЮЛЮЛ", "ЮЛФЛ", "ФЛФЛ", "ФЛЮЛ"]
+          }
+        },
+        {
+          "type": "Input",
+          "inputType": "text",
+          "label": "Телефон представителя Арендатора:",
+          "model": "tenantPhoneNumber",
+          "icon": "phone-in-talk",
+          "mask": "+9(999)999-99-99",
+          "placeholder": "Укажите номер представителя Арендатора",
+          "required": true,
+          "hint": "Городские номера указываются с кодом города. Например: +8(846)***-**-**",
+          "visible": {
+            "dep_name": "sides",
+            "dep_dogovor": "Договор аренды",
+            "dep_type": "Multi_payment",
+            "dep_check": ["ЮЛЮЛ", "ЮЛФЛ", "ФЛФЛ", "ФЛЮЛ"]
+          }
+        },
+        {
           "type": "MultiSelect",
           "label": "Способ оплаты:",
           "placeholder": "Выберите необходимый способ оплаты",
@@ -54,7 +635,13 @@
           "mask": "",
           "id": "pay_method",
           "hint": "Здесь Вам необходимо выбрать способ оплаты по данному договору",
-          "required": true
+          "required": true,
+          "visible": {
+            "dep_name": "sides",
+            "dep_dogovor": "Договор купли-продажи недвижимого имущества",
+            "dep_type": "Multi_payment",
+            "dep_check": ["ЮЛЮЛ", "ЮЛФЛ", "ФЛФЛ", "ФЛЮЛ"]
+          }
         },
         {
           "type": "pseudoLabel",
