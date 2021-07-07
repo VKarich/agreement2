@@ -31,14 +31,14 @@
     "plural-ru": "^2.0.2",
     "rubles": "^0.2.0",
     "vee-validate": "^3.4.5",
-    "vue": "^2.6.13",
+    "vue": "^2.6.14",
     "vue-dadata": "^1.4.10",
     "vue-form-generator": "^2.3.4",
     "vue-multiselect": "^2.1.6",
     "vue-numeral-filter": "^2.0.0",
     "vue-quill-editor": "^3.0.6",
     "vue-scrollto": "^2.20.0",
-    "vue-template-compiler": "^2.6.13"
+    "vue-template-compiler": "^2.6.14"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.16",
