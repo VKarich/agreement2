@@ -26,14 +26,6 @@
         />
       </div>
       <div id="right_menu" v-else-if="select_first_step == 'Договор аренды'">
-        <dogovorArendy
-          :model="model"
-          :select_second_step="select_second_step"
-          :select_third_step="select_third_step"
-          :add="add"
-          :quantityOfProperty="quantityOfProperty"
-          :schema="schema_test"
-        />
       </div>
     </div>
   </div>
@@ -42,7 +34,6 @@
 <script>
 /* eslint-disable */
 import modelFull from "../../model_full.json"
-import dogovorArendy from "@/agreements/dogovor_arendy";
 import dkp from "@/agreements/dogovor_kupli_prodazhi";
 import model_out from "../../model.json";
 import axios from "axios";
