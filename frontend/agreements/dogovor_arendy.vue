@@ -43,11 +43,13 @@ const rubles = require("rubles").rubles;
 let numeral = require('numeral');
 const plural = require("plural-ru");
 
+let data_model_2 = null;
+
 String.prototype.format = function () {
   let a = this;
   for (let k in model) {
     if (model[k] && model[k].length !== 0) {
-      a = a.replace("{{ " + k + " }}", model[k]);
+      a = a.replace("{{ " + k + " }}", data_model_2[k]);
     } else {
       a = a.replace("{{ " + k + " }}", "____________");
     }
@@ -360,8 +362,10 @@ export default {
   created() {
     this.schema[6].fields[0].label = 'Сумма ежемесячной арендной платы:'
     this.data_model = JSON.parse(JSON.stringify(this.model));
+    data_model_2 = JSON.parse(JSON.stringify(this.model));
     for (let i in this.data_model) {
       this.data_model[i] = "_________________";
+      data_model_2[i] = this.data_model[i]
       this.data_model.propertyRegDocDate = [];
     }
   },
@@ -379,6 +383,7 @@ export default {
         for (let i in newValue) {
           if (newValue[i]) {
             this.data_model[i] = newValue[i];
+            data_model_2[i] = newValue[i];
             if (i == 'nds') {
               if (newValue[i] == 'Без учета НДС') {
                 model.nds_expanded = ', без учета налога на добавленную стоимость, а равно - любой другой косвенный налог, сбор или пошлину, которыми облагаются или могут быть обложены этот платёж в соответствии с требованиями законодательства Российской Федерации, при этом такие налоги должны уплачиваться (когда это применимо) в установленном законом размере, сверх сумм, указанных в Договоре.'
@@ -443,8 +448,16 @@ export default {
               }
             }
           }
+          if (newValue[i] instanceof Object) {
+            for (let c in newValue[i]) {
+              if (newValue[i][c] instanceof Date) {
+                data_model_2[i][c] = newValue[i][c].toLocaleDateString();
+              }
+            }
+          }
           if (newValue[i] instanceof Date) {
             this.data_model[i] = newValue[i].toLocaleDateString();
+            data_model_2[i] = newValue[i].toLocaleDateString();
           }
         }
       },
